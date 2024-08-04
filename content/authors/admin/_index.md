@@ -122,5 +122,10 @@ social:
 highlight_name: true
 ---
 
-This is a holder
+Hi, I'm Dawar! I’m currently pursuing a PhD in Natural Language Processing at the Center for Information and Language Processing at Ludwig Maximilians University Munich, and I'm also a junior member at the Munich Center for Machine Learning. I hold both a Bachelor's and a Master's degree in Computer Science from Leipzig University.
+
+My research interests lie in interpretability, summarization, and the intersections of NLP with various domains. When I'm not in the lab, you can catch me running, playing sports, or soaking up the sun while enjoying some [wonderful music](https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=46e05b4251024102).
+
+Let's connect and work together on intepretability and push the boundaries of NLP!
+
 {style="text-align: justify;"}
