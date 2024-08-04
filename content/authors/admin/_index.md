@@ -31,9 +31,9 @@ bio: My research interests include natural language processing, large language m
 # Interests to show in About widget
 interests:
   - Natural Language Processing
+  - Interpretability
   - Large Language Models
   - Summarization
-  - Interpretability
 
 # Education to show in About widget
 education:

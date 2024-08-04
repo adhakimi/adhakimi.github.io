@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Ahmad Dawar Hakimi # Website name
-baseURL: 'https://example.com/' # Website URL
+baseURL: 'https://adhakimi.github.io/' # Website URL
 
 ############################
 ## LANGUAGE
