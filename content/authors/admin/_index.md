@@ -122,7 +122,7 @@ social:
 highlight_name: true
 ---
 
-Hi, I'm Dawar! I’m an ELLIS PhD Candidate in Natural Language Processing at the [Center for Information and Language Processing](https://cisnlp.github.io/) at LMU Munich and [CopeNLU](https://www.copenlu.com/), and a junior member at the Munich Center for Machine Learning. I'm co-supervised by [Hinrich Schütze](https://www.cis.uni-muenchen.de/personen/professoren/schuetze/) and [Isabelle Augenstein](https://isabelleaugenstein.github.io/).
+Hi, I'm Dawar! I’m an ELLIS PhD Candidate in Natural Language Processing at the [CIS](https://cisnlp.github.io/) at LMU Munich and [CopeNLU](https://www.copenlu.com/), and a junior member at the Munich Center for Machine Learning. I'm co-supervised by [Hinrich Schütze](https://www.cis.uni-muenchen.de/personen/professoren/schuetze/) and [Isabelle Augenstein](https://isabelleaugenstein.github.io/).
 
 My research interests lie in interpretability, summarization, and the intersections of NLP with various domains. When I'm not in the lab, you can catch me running, playing sports, or soaking up the sun while enjoying some [wonderful music](https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=46e05b4251024102).
 
