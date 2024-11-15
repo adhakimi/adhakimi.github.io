@@ -21,9 +21,8 @@ role: PhD student
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: CIS Group - Center for Information and Language Processing @ Ludwig Maximilians University Munich
+  - name: CIS @ LMU Muncih <> CopeNLU @ University of Copenhagen
     url: https://cisnlp.github.io/
-  - name: Munich Center for Machine Learning
 
 # Short bio (displayed in user profile at end of posts)
 bio: My research interests include natural language processing, large language models, summarization and interpretability.
