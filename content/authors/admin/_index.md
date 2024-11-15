@@ -21,7 +21,7 @@ role: PhD student
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: CIS @ LMU Muncih <> CopeNLU @ University of Copenhagen
+  - name: CIS @ LMU Munich
     url: https://cisnlp.github.io/
 
 # Short bio (displayed in user profile at end of posts)
