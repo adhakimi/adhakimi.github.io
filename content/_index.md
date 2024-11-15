@@ -34,10 +34,10 @@ sections:
   #   design:
   #     view: article-grid
   #     columns: 2
-  - block: Publications
+  - block: collection
     content:
       title: Recent Publications
-      id: publications
+      id: publication
       text: ""
       filters:
         folders:
