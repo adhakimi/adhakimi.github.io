@@ -43,7 +43,7 @@ sections:
         folders:
           - publication
     design:
-      view: citation
+      view: article-grid
   - block: collection
     id: talks
     content:
