@@ -1,8 +1,8 @@
 ---
 title: Citance-Contextualized Summarization of Scientific Papers
 authors:
-- Ahmad Dawar Hakimi
-- Shahbaz Syed
+- Ahmad Dawar Hakimi*
+- Shahbaz Syed*
 - Khalid Al Khatib
 - Martin Potthast
 date: '2023-01-01'
@@ -25,4 +25,8 @@ abstract: Current approaches to automatic summarization of scientific papers gen
 links:
 - name: URL
   url: https://doi.org/10.18653/v1/2023.findings-emnlp.573
+tags:
+- Summarization
+- Scholarly Document Processing
+- Large Language Models 
 ---

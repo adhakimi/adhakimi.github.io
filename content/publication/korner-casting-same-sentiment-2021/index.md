@@ -20,5 +20,5 @@ abstract: We introduce and study a problem variant of sentiment analysis, namely
   pair classification using the BERT language model. In a series of experiments, we
   achieve an accuracy above 83% for category subsets across topics, and 89% on average.
 tags:
-- /unread
+- Sentiment Classification
 ---

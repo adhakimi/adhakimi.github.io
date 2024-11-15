@@ -28,5 +28,7 @@ abstract: To ease the difficulty of argument stance classification, the task of 
   similarity features, but appear to require domain knowledge and semantic inference,
   too.
 tags:
-- /unread
+- Argumentation
+- Text Classification
+- Dataset
 ---

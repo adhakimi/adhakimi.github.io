@@ -19,10 +19,7 @@ abstract: Detecting references and similarities in music lyrics can be a difficu
   and their lyrics can be analyzed using an explorative visualization system applying
   multiple visualization methods to support domain-specific tasks.
 tags:
-- /unread
-- information visualization
-- intertextuality
-- text reuse
-- visual exploration
-- visual text analysis
+- Information Visualization
+- Visual Exploration
+- Visual Text Analysis
 ---
