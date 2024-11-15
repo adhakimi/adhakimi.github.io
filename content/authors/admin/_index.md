@@ -39,14 +39,11 @@ interests:
 education:
   courses:
     - course: PhD in Natural Language Processing
-      institution: Ludwig Maximilians University Munich
-      year: 2024
+      institution: LMU Munich
     - course: M.Sc. in Computer Science
       institution: Leipzig University
-      year: 2019-2023
     - course: B.Sc. in Computer Science
       institution: Leipzig University
-      year: 2016-2019
 
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
