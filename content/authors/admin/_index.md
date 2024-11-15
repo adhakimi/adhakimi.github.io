@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Dawar
+title: Ahmad Dawar Hakimi
 
 # Name pronunciation (optional)
 name_pronunciation: 
