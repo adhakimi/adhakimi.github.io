@@ -1,8 +1,8 @@
 ---
 title: Citance-Contextualized Summarization of Scientific Papers
 authors:
-- Ahmad Dawar Hakimi*
-- Shahbaz Syed*
+- Ahmad Dawar Hakimi
+- Shahbaz Syed
 - Khalid Al Khatib
 - Martin Potthast
 date: '2023-01-01'

@@ -34,7 +34,7 @@ sections:
   #   design:
   #     view: article-grid
   #     columns: 2
-  - block: collection
+  - block: publications.collection
     content:
       title: Recent Publications
       id: publications
