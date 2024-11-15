@@ -34,7 +34,7 @@ sections:
   #   design:
   #     view: article-grid
   #     columns: 2
-  - block: collection
+  - block: Publications
     content:
       title: Recent Publications
       id: publications
@@ -42,7 +42,6 @@ sections:
       filters:
         folders:
           - publication
-        exclude_featured: false
     design:
       view: citation
   - block: collection
