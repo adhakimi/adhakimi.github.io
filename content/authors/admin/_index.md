@@ -17,7 +17,7 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: PhD student
+role: ELLIS PhD student
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -91,7 +91,7 @@ education:
 social:
   - icon: envelope
     icon_pack: fas
-    link: '/#contact'
+    link: 'adhakimi@cis.lmu.de'
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/adhakimi
