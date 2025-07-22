@@ -19,4 +19,4 @@ links:
 ---
 
 ## Poster
-[📑 Download the poster (PDF)](time-course-poster.pdf)
+[📑 Download the poster](time-course-poster.pdf)
