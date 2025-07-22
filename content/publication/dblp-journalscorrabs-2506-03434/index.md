@@ -12,8 +12,12 @@ publication_types:
 - article-journal
 publication: '*CoRR*'
 doi: 10.48550/ARXIV.2506.03434
-url_pdf: "/static/uploads/time-course-poster.pdf"
+#url_pdf: "/static/uploads/time-course-poster.pdf"
 links:
 - name: URL
   url: https://doi.org/10.48550/arXiv.2506.03434
+- name: Poster      # ← “Poster” will be the button label
+    icon_pack: fas     # optional, for a PDF icon
+    icon: file-pdf
+    url: "/static/uploads/time-course-poster.pdf"
 ---
