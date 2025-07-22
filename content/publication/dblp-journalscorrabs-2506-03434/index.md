@@ -17,4 +17,6 @@ links:
 - name: URL
   url: https://doi.org/10.48550/arXiv.2506.03434
 ---
-[📑 Download the poster (PDF)](/static/uploads/time-course-poster.pdf)
+
+## Poster
+[📑 Download the poster (PDF)](time-course-poster.pdf)
