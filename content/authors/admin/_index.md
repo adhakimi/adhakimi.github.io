@@ -25,13 +25,14 @@ organizations:
     url: https://cisnlp.github.io/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include natural language processing, large language models, summarization and interpretability.
+bio: My research interests include natural language processing, large language models, summarization, active learning, and interpretability.
 
 # Interests to show in About widget
 interests:
   - Natural Language Processing
   - Interpretability
   - Large Language Models
+  - Active Learning
   - Summarization
 
 # Education to show in About widget
@@ -118,10 +119,10 @@ social:
 highlight_name: true
 ---
 
-Hi, I'm Dawar! I’m a first-year ELLIS PhD Student in Natural Language Processing at the [Center for Information and Language Processing (CIS)](https://cisnlp.github.io/) at LMU Munich and [CopeNLU](https://www.copenlu.com/), and a Junior Member at the [Munich Center for Machine Learning (MCML)](https://mcml.ai/). I'm co-supervised by [Hinrich Schütze](https://www.cis.uni-muenchen.de/personen/professoren/schuetze/) and [Isabelle Augenstein](https://isabelleaugenstein.github.io/).
+Hi, I'm Dawar! I’m a second-year ELLIS PhD Student in Natural Language Processing at the [Center for Information and Language Processing (CIS)](https://cisnlp.github.io/) at LMU Munich and [CopeNLU](https://www.copenlu.com/), and a Junior Member at the [Munich Center for Machine Learning (MCML)](https://mcml.ai/). I'm co-supervised by [Hinrich Schütze](https://www.cis.uni-muenchen.de/personen/professoren/schuetze/) and [Isabelle Augenstein](https://isabelleaugenstein.github.io/).
 
-My research interests lie in interpretability, summarization, and the intersections of NLP with various domains. When I'm not in the lab, you can catch me running, playing sports, or soaking up the sun while enjoying some [wonderful music](https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=46e05b4251024102).
+My research interests lie in interpretability, active learning, summarization, and the intersections of NLP with various domains. When I'm not in the lab, you can catch me running, playing sports, or soaking up the sun while enjoying some [wonderful music](https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=46e05b4251024102).
 
-Let's connect and work together on interpretability and push the boundaries of NLP!
+Let's connect and work together on interpretability and active learning and push the boundaries of NLP!
 
 {style="text-align: justify;"}
