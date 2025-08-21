@@ -123,6 +123,6 @@ Hi, I'm Dawar! I’m a second-year ELLIS PhD Student in Natural Language Process
 
 My research interests lie in interpretability, active learning, summarization, and the intersections of NLP with various domains. When I'm not in the lab, you can catch me running, playing sports, or soaking up the sun while enjoying some [wonderful music](https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=46e05b4251024102).
 
-Let's connect and work together on interpretability and active learning and push the boundaries of NLP!
+Let's connect and work together on interpretability and active learning and push the boundaries of NLP
 
 {style="text-align: justify;"}
