@@ -41,7 +41,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: ${{ env.WC_HUGO_VERSION }}
+          hugo-version: '0.133.1'
           extended: true
 
       - name: Cache Hugo modules
