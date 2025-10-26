@@ -69,7 +69,7 @@ jobs:
           path: ./public
 
   # Deploy website to GitHub Pages hosting
- deploy:
+  deploy:
     needs: build
     permissions:
       pages: write
