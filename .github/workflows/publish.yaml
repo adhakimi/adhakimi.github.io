@@ -1,30 +1,24 @@
 name: Deploy website to GitHub Pages
 
+env:
+  WC_HUGO_VERSION: '0.119.0'
+
 on:
+  # Trigger the workflow every time you push to the `main` branch
   push:
-    branches: [ main ]
-    # (optional) Only rebuild when site content actually changed:
-    # paths:
-    #   - 'content/**'
-    #   - 'assets/**'
-    #   - 'static/**'
-    #   - 'data/**'
-    #   - 'config/**'
-    #   - 'hugo.toml'
-  workflow_run:
-    workflows:
-      - "Import Publications From Bibtex"
-      - "Updater (WIP)"          # include any workflow that may commit site files
-    types: [ completed ]
+    branches: ["main"]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
+# Provide permission to clone the repo and deploy it to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   # Build website
@@ -41,7 +35,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.133.1'
+          hugo-version: ${{ env.WC_HUGO_VERSION }}
           extended: true
 
       - name: Cache Hugo modules
@@ -70,14 +64,13 @@ jobs:
 
   # Deploy website to GitHub Pages hosting
   deploy:
+    if: github.repository_owner != 'HugoBlox'
     needs: build
-    permissions:
-      pages: write
-      id-token: write
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
