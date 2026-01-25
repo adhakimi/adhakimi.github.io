@@ -258,6 +258,7 @@
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .research-card:hover {
@@ -290,6 +291,12 @@
         .publication-item:hover {
             border-color: rgba(29, 84, 109, 0.6);
             transform: translateX(10px);
+        }
+
+        .publication-item.highlight {
+            border-color: rgba(29, 84, 109, 0.8);
+            background: rgba(29, 84, 109, 0.1);
+            box-shadow: 0 10px 30px rgba(29, 84, 109, 0.3);
         }
 
         .publication-item h3 {
@@ -531,6 +538,105 @@
         .blog-card:hover .read-more {
             gap: 1rem;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 900px;
+            width: 100%;
+            margin: 2rem auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #e0e0e0;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(29, 84, 109, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1D546D 0%, #2A6F7E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 1rem;
+            color: #808080;
+            font-size: 0.95rem;
+        }
+
+        .modal-body {
+            color: #c0c0c0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .modal-body h3 {
+            color: #2A6F7E;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body code {
+            background: rgba(29, 84, 109, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
     </style>
 </head>
 <body>
@@ -576,21 +682,17 @@
     <section id="research">
         <h2 class="section-title">Research Focus</h2>
         <div class="research-areas">
-            <div class="research-card">
-                <h3>🔍 Interpretability</h3>
+            <div class="research-card" onclick="filterPublications('interpretability')">
+                <h3>🔍 Mechanistic Interpretability Research</h3>
                 <p>Uncovering how neural networks process and represent language, making AI systems more transparent and trustworthy through mechanistic interpretability.</p>
             </div>
-            <div class="research-card">
+            <div class="research-card" onclick="filterPublications('active-learning')">
                 <h3>🎯 Active Learning</h3>
                 <p>Developing efficient methods for training models with minimal labeled data, reducing annotation costs while maintaining high performance.</p>
             </div>
-            <div class="research-card">
+            <div class="research-card" onclick="filterPublications('llms')">
                 <h3>🤖 Large Language Models</h3>
                 <p>Analyzing and understanding the behavior of large-scale language models, exploring their capabilities and limitations.</p>
-            </div>
-            <div class="research-card">
-                <h3>📝 Summarization</h3>
-                <p>Creating intelligent systems for condensing scientific papers and documents while preserving critical information and context.</p>
             </div>
         </div>
     </section>
@@ -598,22 +700,22 @@
     <section id="publications">
         <h2 class="section-title">Selected Publications</h2>
         <div class="publications-list">
-            <div class="publication-item">
+            <div class="publication-item" data-tags="interpretability,llms">
                 <h3>Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models</h3>
                 <div class="publication-authors">Ahmad Dawar Hakimi, Ali Modarressi, Philipp Wicke, Hinrich Schütze</div>
                 <div class="publication-venue">CoRR, 2025</div>
             </div>
-            <div class="publication-item">
+            <div class="publication-item" data-tags="interpretability,llms">
                 <h3>On Relation-Specific Neurons in Large Language Models</h3>
                 <div class="publication-authors">Yihong Liu, Runsheng Chen, Lea Hirlimann, Ahmad Dawar Hakimi, et al.</div>
                 <div class="publication-venue">CoRR, 2025</div>
             </div>
-            <div class="publication-item">
+            <div class="publication-item" data-tags="interpretability">
                 <h3>BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods</h3>
                 <div class="publication-authors">Philipp Mondorf, Mingyang Wang, Sebastian Gerstner, Ahmad Dawar Hakimi, et al.</div>
                 <div class="publication-venue">arXiv preprint, 2025</div>
             </div>
-            <div class="publication-item">
+            <div class="publication-item" data-tags="summarization">
                 <h3>Citance-Contextualized Summarization of Scientific Papers</h3>
                 <div class="publication-authors">Ahmad Dawar Hakimi, Shahbaz Syed, Khalid Al Khatib, Martin Potthast</div>
                 <div class="publication-venue">EMNLP Findings, 2023</div>
@@ -624,7 +726,7 @@
     <section id="blog">
         <h2 class="section-title">Latest Blog Posts</h2>
         <div class="blog-grid">
-            <div class="blog-card">
+            <div class="blog-card" onclick="openBlog('blog1')">
                 <div class="blog-image">🧠</div>
                 <div class="blog-content">
                     <div class="blog-meta">
@@ -636,7 +738,7 @@
                     <span class="read-more">Read More →</span>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card" onclick="openBlog('blog2')">
                 <div class="blog-image">🎯</div>
                 <div class="blog-content">
                     <div class="blog-meta">
@@ -648,7 +750,7 @@
                     <span class="read-more">Read More →</span>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card" onclick="openBlog('blog3')">
                 <div class="blog-image">🤖</div>
                 <div class="blog-content">
                     <div class="blog-meta">
@@ -660,7 +762,7 @@
                     <span class="read-more">Read More →</span>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card" onclick="openBlog('blog4')">
                 <div class="blog-image">📚</div>
                 <div class="blog-content">
                     <div class="blog-meta">
@@ -674,6 +776,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBlog()">×</button>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <div class="modal-meta">
+                    <span id="modalDate"></span>
+                    <span id="modalCategory"></span>
+                </div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
 
     <section id="contact">
         <h2 class="section-title">Let's Connect</h2>
@@ -711,6 +828,151 @@
             if (hero) {
                 hero.style.transform = `translateY(${scrolled * 0.5}px)`;
                 hero.style.opacity = 1 - scrolled / 700;
+            }
+        });
+
+        // Filter publications by research area
+        function filterPublications(tag) {
+            const publications = document.querySelectorAll('.publication-item');
+            
+            // Remove all highlights
+            publications.forEach(pub => pub.classList.remove('highlight'));
+            
+            // Scroll to publications section
+            document.querySelector('#publications').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Highlight matching publications after scroll
+            setTimeout(() => {
+                publications.forEach(pub => {
+                    const tags = pub.getAttribute('data-tags');
+                    if (tags && tags.includes(tag)) {
+                        pub.classList.add('highlight');
+                    }
+                });
+            }, 800);
+        }
+
+        // Blog content
+        const blogContent = {
+            blog1: {
+                title: "Understanding Neural Circuits: A Deep Dive",
+                date: "Dec 20, 2024",
+                category: "Interpretability",
+                content: `
+                    <p>Mechanistic interpretability is one of the most exciting frontiers in AI research. As we deploy increasingly powerful language models, understanding what's happening inside these black boxes becomes crucial for safety, reliability, and scientific progress.</p>
+                    
+                    <h3>What Are Neural Circuits?</h3>
+                    <p>Neural circuits are specific pathways through a neural network that are responsible for particular behaviors or capabilities. Think of them as computational subgraphs that implement distinct algorithms within the larger model.</p>
+                    
+                    <p>In our recent work on Time Course MechInterp, we discovered that these circuits don't emerge all at once during training. Instead, they develop gradually, with different components coming online at different stages of the training process.</p>
+                    
+                    <h3>Techniques for Circuit Discovery</h3>
+                    <p>There are several approaches to identifying these circuits:</p>
+                    <p><strong>Activation Patching:</strong> By systematically replacing activations from one forward pass with those from another, we can identify which components are necessary for specific behaviors.</p>
+                    <p><strong>Attribution Methods:</strong> Techniques like integrated gradients help us understand which neurons contribute most to particular outputs.</p>
+                    <p><strong>Causal Interventions:</strong> We can ablate or modify specific components and observe how this affects model behavior.</p>
+                    
+                    <h3>Why This Matters</h3>
+                    <p>Understanding neural circuits isn't just academically interesting—it has practical implications for AI safety, debugging, and model improvement. When we know which circuits are responsible for which behaviors, we can potentially edit or control those behaviors more precisely.</p>
+                    
+                    <p>The field is moving fast, and there's still so much to discover. If you're interested in this area, I'd encourage you to check out our recent publications and reach out if you'd like to collaborate!</p>
+                `
+            },
+            blog2: {
+                title: "Efficient Training with Active Learning",
+                date: "Nov 15, 2024",
+                category: "Active Learning",
+                content: `
+                    <p>One of the biggest bottlenecks in machine learning is obtaining labeled training data. Active learning offers an elegant solution: instead of labeling data randomly, we intelligently select the most informative examples to label.</p>
+                    
+                    <h3>The Core Idea</h3>
+                    <p>Active learning flips the traditional supervised learning paradigm on its head. Rather than passively accepting whatever labeled data we're given, we actively query for labels on examples that will be most useful for improving our model.</p>
+                    
+                    <h3>Uncertainty Sampling</h3>
+                    <p>The most common approach is uncertainty sampling: we select examples where our current model is most uncertain. This can be measured in various ways, such as prediction entropy, margin between top predictions, or using ensemble disagreement.</p>
+                    
+                    <h3>Real-World Impact</h3>
+                    <p>In practice, active learning can reduce labeling requirements by 50-90% while achieving similar performance to models trained on randomly selected data. This is particularly valuable in domains where expert annotations are expensive, such as medical imaging or specialized NLP tasks.</p>
+                    
+                    <p>However, active learning isn't without challenges. Distribution shift, query strategy selection, and computational overhead are all important considerations when deploying these systems in practice.</p>
+                `
+            },
+            blog3: {
+                title: "What Do Language Models Really Know?",
+                date: "Oct 28, 2024",
+                category: "LLMs",
+                content: `
+                    <p>Large language models can answer countless questions about the world, but how exactly do they store and retrieve this knowledge? Our recent work on relation-specific neurons provides some fascinating insights.</p>
+                    
+                    <h3>Knowledge in Neural Networks</h3>
+                    <p>It turns out that factual knowledge isn't uniformly distributed across a language model. Instead, we find that certain neurons specialize in encoding specific types of relations—like "country-capital" or "person-birthplace" relationships.</p>
+                    
+                    <h3>Relation-Specific Neurons</h3>
+                    <p>Through careful analysis, we've identified neurons that consistently activate when the model is processing certain types of factual relations. These neurons seem to act as specialized knowledge stores, activated when the model needs to retrieve specific types of information.</p>
+                    
+                    <h3>Implications for Model Editing</h3>
+                    <p>Understanding how models store knowledge opens up possibilities for targeted interventions. If we know which neurons encode which facts, we could potentially update a model's knowledge without full retraining—a crucial capability as the world changes and facts become outdated.</p>
+                    
+                    <p>This research also raises intriguing questions about the nature of knowledge representation in artificial systems versus biological brains. Are there fundamental similarities in how distributed systems encode and retrieve information?</p>
+                `
+            },
+            blog4: {
+                title: "Lessons from My First Year as a PhD Student",
+                date: "Sep 10, 2024",
+                category: "Research Life",
+                content: `
+                    <p>Starting a PhD is simultaneously exciting and overwhelming. After completing my first year as an ELLIS PhD student, I wanted to share some reflections that might help others on a similar journey.</p>
+                    
+                    <h3>Finding Your Research Direction</h3>
+                    <p>One of the hardest parts of starting a PhD is identifying the right research questions. I spent my first few months exploring different areas within NLP before finding my passion for mechanistic interpretability. Don't rush this process—it's okay to explore and change direction.</p>
+                    
+                    <h3>Building Research Skills</h3>
+                    <p>Reading papers efficiently, running experiments rigorously, and writing clearly are all skills that take time to develop. I found it helpful to:</p>
+                    <p>• Set up a regular paper reading routine (I aim for 3-5 papers per week)</p>
+                    <p>• Keep detailed experiment logs from day one</p>
+                    <p>• Write regularly, even if it's just research notes</p>
+                    
+                    <h3>Work-Life Balance</h3>
+                    <p>Research can be all-consuming if you let it. I've learned to protect time for running, sports, and just enjoying Munich. These activities aren't distractions from research—they're essential for maintaining the creativity and energy that good research requires.</p>
+                    
+                    <h3>Collaboration and Community</h3>
+                    <p>Being part of both CIS at LMU Munich and CopeNLU has been invaluable. Regular interactions with fellow PhD students, postdocs, and faculty have shaped my thinking and opened up new research directions. Don't isolate yourself—research is fundamentally a social activity.</p>
+                    
+                    <p>The PhD journey is long, but the first year has taught me that with curiosity, persistence, and good collaborators, it can also be incredibly rewarding.</p>
+                `
+            }
+        };
+
+        // Open blog modal
+        function openBlog(blogId) {
+            const blog = blogContent[blogId];
+            if (blog) {
+                document.getElementById('modalTitle').textContent = blog.title;
+                document.getElementById('modalDate').textContent = blog.date;
+                document.getElementById('modalCategory').textContent = '• ' + blog.category;
+                document.getElementById('modalBody').innerHTML = blog.content;
+                document.getElementById('blogModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close blog modal
+        function closeBlog() {
+            document.getElementById('blogModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('blogModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBlog();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBlog();
             }
         });
     </script>
