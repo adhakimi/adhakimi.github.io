@@ -286,6 +286,7 @@
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .publication-item:hover {
@@ -297,6 +298,32 @@
             border-color: rgba(29, 84, 109, 0.8);
             background: rgba(29, 84, 109, 0.1);
             box-shadow: 0 10px 30px rgba(29, 84, 109, 0.3);
+        }
+
+        .publication-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(29, 84, 109, 0.2);
+            border: 1px solid rgba(29, 84, 109, 0.3);
+            border-radius: 15px;
+            color: #2A6F7E;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .pub-link:hover {
+            background: rgba(29, 84, 109, 0.3);
+            transform: translateY(-2px);
         }
 
         .publication-item h3 {
@@ -700,42 +727,42 @@
     <section id="publications">
         <h2 class="section-title">Publications</h2>
         <div class="publications-list">
-            <div class="publication-item" data-tags="interpretability,llms">
+            <div class="publication-item" data-tags="interpretability,llms" onclick="openPaper('paper1')">
                 <h3>On relation-specific neurons in large language models</h3>
                 <div class="publication-authors">Liu, Yihong, Chen, Runsheng, Hirlimann, Lea, Hakimi, Ahmad Dawar, Wang, Mingyang, Kargaran, Amir Hossein, Rothe, Sascha, Yvon, François, Schütze, Hinrich</div>
                 <div class="publication-venue">arXiv preprint arXiv:2502.17355, 2025</div>
             </div>
-            <div class="publication-item" data-tags="interpretability,llms">
+            <div class="publication-item" data-tags="interpretability,llms" onclick="openPaper('paper2')">
                 <h3>Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models</h3>
                 <div class="publication-authors">Hakimi, Ahmad Dawar, Modarressi, Ali, Wicke, Philipp, Schütze, Hinrich</div>
                 <div class="publication-venue">arXiv preprint arXiv:2506.03434, 2025</div>
             </div>
-            <div class="publication-item" data-tags="interpretability">
+            <div class="publication-item" data-tags="interpretability" onclick="openPaper('paper3')">
                 <h3>BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods</h3>
                 <div class="publication-authors">Mondorf, Philipp, Wang, Mingyang, Gerstner, Sebastian, Hakimi, Ahmad Dawar, Liu, Yihong, Veloso, Leonor, Zhou, Shijia, Schütze, Hinrich, Plank, Barbara</div>
                 <div class="publication-venue">Proceedings of the 8th BlackboxNLP Workshop: Analyzing and Interpreting Neural Networks for NLP: 537-542, 2025</div>
             </div>
-            <div class="publication-item" data-tags="summarization">
+            <div class="publication-item" data-tags="summarization" onclick="openPaper('paper4')">
                 <h3>Citance-contextualized summarization of scientific papers</h3>
                 <div class="publication-authors">Syed, Shahbaz, Hakimi, Ahmad Dawar, Al Khatib, Khalid, Potthast, Martin</div>
                 <div class="publication-venue">Findings of the Association for Computational Linguistics: EMNLP 2023: 8551-8568, 2023</div>
             </div>
-            <div class="publication-item" data-tags="visualization">
+            <div class="publication-item" data-tags="visualization" onclick="openPaper('paper5')">
                 <h3>Explorative visual analysis of rap music</h3>
                 <div class="publication-authors">Meinecke, Christofer, Hakimi, Ahmad Dawar, Jänicke, Stefan</div>
                 <div class="publication-venue">Information 13(1): 10, 2021</div>
             </div>
-            <div class="publication-item" data-tags="sentiment">
+            <div class="publication-item" data-tags="sentiment" onclick="openPaper('paper6')">
                 <h3>Casting the same sentiment classification problem</h3>
                 <div class="publication-authors">Körner, Erik, Hakimi, Ahmad Dawar, Heyer, Gerhard, Potthast, Martin</div>
                 <div class="publication-venue">Findings of the Association for Computational Linguistics: EMNLP 2021: 584-590, 2021</div>
             </div>
-            <div class="publication-item" data-tags="argument-mining">
+            <div class="publication-item" data-tags="argument-mining" onclick="openPaper('paper7')">
                 <h3>On classifying whether two texts are on the same side of an argument</h3>
                 <div class="publication-authors">Körner, Erik, Wiedemann, Gregor, Hakimi, Ahmad Dawar, Heyer, Gerhard, Potthast, Martin</div>
                 <div class="publication-venue">Proceedings of the 2021 conference on empirical methods in natural language processing: 10130-10138, 2021</div>
             </div>
-            <div class="publication-item" data-tags="argument-mining">
+            <div class="publication-item" data-tags="argument-mining" onclick="openPaper('paper8')">
                 <h3>The road map to FAME: A framework for mining and formal evaluation of arguments</h3>
                 <div class="publication-authors">Baumann, Ringo, Wiedemann, Gregor, Heinrich, Maximilian, Hakimi, Ahmad Dawar, Heyer, Gerhard</div>
                 <div class="publication-venue">Datenbank-Spektrum 20(2): 107-113, 2020</div>
@@ -812,6 +839,27 @@
         </div>
     </div>
 
+    <!-- Paper Modal -->
+    <div id="paperModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePaper()">×</button>
+            <div class="modal-header">
+                <h2 id="paperTitle"></h2>
+                <div class="modal-meta">
+                    <span id="paperAuthors"></span>
+                </div>
+                <div class="modal-meta" style="margin-top: 0.5rem;">
+                    <span id="paperVenue"></span>
+                </div>
+                <div id="paperLinks" class="publication-links" style="margin-top: 1rem;"></div>
+            </div>
+            <div class="modal-body">
+                <h3>Abstract</h3>
+                <p id="paperAbstract"></p>
+            </div>
+        </div>
+    </div>
+
     <section id="contact">
         <h2 class="section-title">Let's Connect</h2>
         <p style="text-align: center; font-size: 1.2rem; color: #b0b0b0; max-width: 600px; margin: 0 auto 2rem;">
@@ -870,6 +918,116 @@
                     }
                 });
             }, 800);
+        }
+
+        // Paper data with abstracts and links
+        const paperData = {
+            paper1: {
+                title: "On relation-specific neurons in large language models",
+                authors: "Liu, Yihong, Chen, Runsheng, Hirlimann, Lea, Hakimi, Ahmad Dawar, Wang, Mingyang, Kargaran, Amir Hossein, Rothe, Sascha, Yvon, François, Schütze, Hinrich",
+                venue: "arXiv preprint arXiv:2502.17355, 2025",
+                abstract: "Large language models encode vast amounts of factual knowledge. Understanding how this knowledge is stored and retrieved is crucial for interpretability and model editing. We investigate relation-specific neurons in large language models and discover that certain neurons consistently activate when processing specific types of factual relations.",
+                links: [
+                    { text: "📄 arXiv", url: "https://arxiv.org/abs/2502.17355" },
+                    { text: "💻 Code", url: "#" }
+                ]
+            },
+            paper2: {
+                title: "Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models",
+                authors: "Hakimi, Ahmad Dawar, Modarressi, Ali, Wicke, Philipp, Schütze, Hinrich",
+                venue: "arXiv preprint arXiv:2506.03434, 2025",
+                abstract: "We present Time Course MechInterp, a framework for analyzing how neural network components and knowledge evolve during training. Our approach reveals that different circuits emerge at different stages of training, providing insights into the learning dynamics of large language models. We demonstrate that mechanistic interpretability techniques can be applied longitudinally to understand model development.",
+                links: [
+                    { text: "📄 arXiv", url: "https://arxiv.org/abs/2506.03434" },
+                    { text: "🖼️ Poster", url: "https://adhakimi.github.io/time-course-poster.pdf" }
+                ]
+            },
+            paper3: {
+                title: "BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods",
+                authors: "Mondorf, Philipp, Wang, Mingyang, Gerstner, Sebastian, Hakimi, Ahmad Dawar, Liu, Yihong, Veloso, Leonor, Zhou, Shijia, Schütze, Hinrich, Plank, Barbara",
+                venue: "Proceedings of the 8th BlackboxNLP Workshop: Analyzing and Interpreting Neural Networks for NLP, 2025",
+                abstract: "We explore ensemble strategies for circuit localization methods in the BlackboxNLP-2025 MIB shared task. Our approach combines multiple circuit discovery techniques to achieve more robust and reliable identification of neural pathways responsible for specific model behaviors.",
+                links: [
+                    { text: "📄 Paper", url: "https://arxiv.org/abs/2510.06811" }
+                ]
+            },
+            paper4: {
+                title: "Citance-contextualized summarization of scientific papers",
+                authors: "Syed, Shahbaz, Hakimi, Ahmad Dawar, Al Khatib, Khalid, Potthast, Martin",
+                venue: "Findings of the Association for Computational Linguistics: EMNLP 2023",
+                abstract: "We propose citance-contextualized summarization, a novel approach to scientific paper summarization that leverages citation contexts. By analyzing how papers are cited by others, we can better understand which aspects of a paper are most important to the research community. Our method produces summaries that better reflect the paper's scientific contribution.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2023.findings-emnlp.573/" }
+                ]
+            },
+            paper5: {
+                title: "Explorative visual analysis of rap music",
+                authors: "Meinecke, Christofer, Hakimi, Ahmad Dawar, Jänicke, Stefan",
+                venue: "Information 13(1): 10, 2021",
+                abstract: "We present a visual analytics approach for exploring rap music lyrics. Our system enables researchers to analyze patterns, themes, and linguistic features in rap music through interactive visualizations. The tool supports both quantitative analysis and qualitative exploration of this rich musical genre.",
+                links: [
+                    { text: "📄 Paper", url: "https://doi.org/10.3390/info13010010" }
+                ]
+            },
+            paper6: {
+                title: "Casting the same sentiment classification problem",
+                authors: "Körner, Erik, Hakimi, Ahmad Dawar, Heyer, Gerhard, Potthast, Martin",
+                venue: "Findings of the Association for Computational Linguistics: EMNLP 2021",
+                abstract: "We investigate how the framing of sentiment classification tasks affects model performance and behavior. Our findings show that seemingly equivalent formulations of the same task can lead to different results, highlighting the importance of careful task design in NLP.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2021.findings-emnlp.50/" }
+                ]
+            },
+            paper7: {
+                title: "On classifying whether two texts are on the same side of an argument",
+                authors: "Körner, Erik, Wiedemann, Gregor, Hakimi, Ahmad Dawar, Heyer, Gerhard, Potthast, Martin",
+                venue: "Proceedings of EMNLP 2021",
+                abstract: "We address the task of determining whether two texts support the same side of an argument. This is a fundamental problem in argument mining with applications in debate analysis, fact-checking, and opinion mining. We propose novel approaches and evaluate them on diverse datasets.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2021.emnlp-main.793/" }
+                ]
+            },
+            paper8: {
+                title: "The road map to FAME: A framework for mining and formal evaluation of arguments",
+                authors: "Baumann, Ringo, Wiedemann, Gregor, Heinrich, Maximilian, Hakimi, Ahmad Dawar, Heyer, Gerhard",
+                venue: "Datenbank-Spektrum 20(2): 107-113, 2020",
+                abstract: "We present FAME, a comprehensive framework for mining and formally evaluating arguments from text. The framework combines computational argumentation with natural language processing to enable systematic analysis of argumentative discourse. FAME provides both theoretical foundations and practical tools for argument analysis.",
+                links: [
+                    { text: "📄 Paper", url: "https://doi.org/10.1007/s13222-020-00344-z" }
+                ]
+            }
+        };
+
+        // Open paper modal
+        function openPaper(paperId) {
+            const paper = paperData[paperId];
+            if (paper) {
+                document.getElementById('paperTitle').textContent = paper.title;
+                document.getElementById('paperAuthors').textContent = paper.authors;
+                document.getElementById('paperVenue').textContent = paper.venue;
+                document.getElementById('paperAbstract').textContent = paper.abstract;
+                
+                // Add links
+                const linksContainer = document.getElementById('paperLinks');
+                linksContainer.innerHTML = '';
+                paper.links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.className = 'pub-link';
+                    a.textContent = link.text;
+                    a.target = '_blank';
+                    linksContainer.appendChild(a);
+                });
+                
+                document.getElementById('paperModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close paper modal
+        function closePaper() {
+            document.getElementById('paperModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         // Blog content
@@ -989,10 +1147,17 @@
             }
         });
 
+        document.getElementById('paperModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePaper();
+            }
+        });
+
         // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeBlog();
+                closePaper();
             }
         });
     </script>
