@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Dawar Hakimi - NLP Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1D546D;
+            --primary-light: #2a7a9b;
+            --primary-dark: #143d50;
+            --accent: #4ecdc4;
+            --accent-glow: rgba(78, 205, 196, 0.3);
+            --bg-dark: #0a0f1a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(29, 84, 109, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(29, 84, 109, 0.2) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 15, 26, 0.8);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, var(--accent), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-affiliation {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(29, 84, 109, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(78, 205, 196, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            margin-top: 3rem;
+            animation: floating 6s ease-in-out infinite, fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-image img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 40px var(--accent-glow);
+            object-fit: cover;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .hero-tag {
+            padding: 0.4rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Research Cards */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(78, 205, 196, 0.1);
+        }
+
+        .research-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .research-card .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Publications */
+        .publication-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .publication-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 5px 25px rgba(78, 205, 196, 0.1);
+            transform: translateX(5px);
+        }
+
+        .publication-item.highlighted {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .publication-item h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .publication-authors {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .publication-venue {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .publication-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            background: rgba(78, 205, 196, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+        }
+
+        /* Blog Section */
+        .blog-coming-soon {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .blog-coming-soon .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-coming-soon h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .blog-coming-soon p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #0f1923;
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 750px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            padding-right: 2rem;
+            line-height: 1.5;
+        }
+
+        .modal-content .modal-authors {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-content .modal-venue {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content .abstract {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            background: rgba(78, 205, 196, 0.1);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            transition: all 0.3s;
+        }
+
+        .modal-links a:hover {
+            background: rgba(78, 205, 196, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Contact */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Filter buttons */
+        .filter-notice {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .filter-notice.active {
+            opacity: 1;
+        }
+
+        .filter-notice button {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            margin-left: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .research-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            section { padding: 3rem 1.2rem; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+
+        .modal-content::-webkit-scrollbar { width: 6px; }
+        .modal-content::-webkit-scrollbar-track { background: transparent; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">ADH</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Ahmad Dawar Hakimi</h1>
+            <div class="hero-subtitle">ELLIS PhD Student</div>
+            <div class="hero-affiliation">CIS @ LMU Munich · CopeNLU @ UCPH</div>
+            <p class="hero-description">
+                Hi, I’m Dawar, a second-year ELLIS PhD student at LMU Munich and the University of Copenhagen, co-supervised by Hinrich Schütze and Isabelle Augenstein.
+                In my research, I work on training dynamics in large language models and active learning in the era of LLMs.
+                When I’m not in the lab studying training dynamics in llms, I’m working on training dynamics in humans with Early Birds Urban Movement or enjoying
+                <a href="https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=170f8bdd6d424401" target="_blank" rel="noopener noreferrer">
+                    some beautiful music
+                </a>.
+            </p>
+            <div class="hero-buttons">
+                <a href="#publications" class="btn btn-primary">View Publications</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+            <div class="hero-image">
+                <img src="Foto-Hakimi.jpg" alt="Ahmad Dawar Hakimi">
+            </div>
+            <div class="hero-tags">
+                <span class="hero-tag">Interpretability</span>
+                <span class="hero-tag">Active Learning</span>
+                <span class="hero-tag">LLMs</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2 class="section-title">Research Focus</h2>
+        <div class="research-grid">
+            <div class="research-card" data-filter="interpretability" onclick="filterPublications('interpretability')">
+                <div class="card-icon">🔍</div>
+                <h3>Mechanistic Interpretability Research</h3>
+                <p>Uncovering how neural networks process and represent language, making AI systems more transparent and trustworthy through mechanistic interpretability.</p>
+            </div>
+            <div class="research-card" data-filter="active-learning" onclick="filterPublications('active-learning')">
+                <div class="card-icon">🎯</div>
+                <h3>Active Learning</h3>
+                <p>Developing efficient methods for training models with minimal labeled data, reducing annotation costs while maintaining high performance.</p>
+            </div>
+            <div class="research-card" data-filter="llms" onclick="filterPublications('llms')">
+                <div class="card-icon">🤖</div>
+                <h3>Large Language Models</h3>
+                <p>Analyzing and understanding the behavior of large-scale language models, exploring their capabilities and limitations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="filter-notice" id="filterNotice">
+            Showing publications related to: <strong id="filterLabel"></strong>
+            <button onclick="clearFilter()">Show all</button>
+        </div>
+
+        <div class="publication-item" data-tags="active-learning llms" data-paper="paper0" onclick="openPaperModal('paper0')">
+            <h3>Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection</h3>
+            <div class="publication-authors">Ahmad Dawar Hakimi, Lea Hirlimann, Isabelle Augenstein, Hinrich Schütze</div>
+            <div class="publication-venue">arXiv preprint, 2026</div>
+            <div class="publication-tags">
+                <span class="pub-tag">active-learning</span>
+                <span class="pub-tag">llms</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="interpretability llms" data-paper="paper1" onclick="openPaperModal('paper1')">
+            <h3>On Relation-Specific Neurons in Large Language Models</h3>
+            <div class="publication-authors">Yihong Liu*, Runsheng Chen*, Lea Hirlimann, Ahmad Dawar Hakimi, Mingyang Wang, Amir Hossein Kargaran, Sascha Rothe, François Yvon, Hinrich Schütze</div>
+            <div class="publication-venue">EMNLP 2025</div>
+            <div class="publication-tags">
+                <span class="pub-tag">interpretability</span>
+                <span class="pub-tag">llms</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="interpretability llms" data-paper="paper2" onclick="openPaperModal('paper2')">
+            <h3>Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models</h3>
+            <div class="publication-authors">Ahmad Dawar Hakimi, Ali Modarressi, Philipp Wicke, Hinrich Schütze</div>
+            <div class="publication-venue">Findings of ACL 2025</div>
+            <div class="publication-tags">
+                <span class="pub-tag">interpretability</span>
+                <span class="pub-tag">llms</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="interpretability llms" data-paper="paper3" onclick="openPaperModal('paper3')">
+            <h3>BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods</h3>
+            <div class="publication-authors">Philipp Mondorf, Mingyang Wang, Sebastian Gerstner, Ahmad Dawar Hakimi, Yihong Liu, Leonor Veloso, Shijia Zhou, Hinrich Schütze, Barbara Plank</div>
+            <div class="publication-venue">BlackboxNLP Workshop @ EMNLP 2025</div>
+            <div class="publication-tags">
+                <span class="pub-tag">interpretability</span>
+                <span class="pub-tag">llms</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="summarization" data-paper="paper4" onclick="openPaperModal('paper4')">
+            <h3>Citance-Contextualized Summarization of Scientific Papers</h3>
+            <div class="publication-authors">Shahbaz Syed*, Ahmad Dawar Hakimi*, Khalid Al-Khatib, Martin Potthast</div>
+            <div class="publication-venue">Findings of EMNLP 2023</div>
+            <div class="publication-tags">
+                <span class="pub-tag">summarization</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="visualization" data-paper="paper5" onclick="openPaperModal('paper5')">
+            <h3>Explorative Visual Analysis of Rap Music</h3>
+            <div class="publication-authors">Christofer Meinecke, Ahmad Dawar Hakimi, Stefan Jänicke</div>
+            <div class="publication-venue">Information, 13(1), 2022</div>
+            <div class="publication-tags">
+                <span class="pub-tag">visualization</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="sentiment" data-paper="paper6" onclick="openPaperModal('paper6')">
+            <h3>Casting the Same Sentiment Classification Problem</h3>
+            <div class="publication-authors">Erik Körner, Ahmad Dawar Hakimi, Gerhard Heyer, Martin Potthast</div>
+            <div class="publication-venue">Findings of EMNLP 2021</div>
+            <div class="publication-tags">
+                <span class="pub-tag">sentiment</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="argument-mining" data-paper="paper7" onclick="openPaperModal('paper7')">
+            <h3>On Classifying Whether Two Texts Are on the Same Side of an Argument</h3>
+            <div class="publication-authors">Erik Körner, Gregor Wiedemann, Ahmad Dawar Hakimi, Gerhard Heyer, Martin Potthast</div>
+            <div class="publication-venue">EMNLP 2021</div>
+            <div class="publication-tags">
+                <span class="pub-tag">argument-mining</span>
+            </div>
+        </div>
+
+        <div class="publication-item" data-tags="argument-mining" data-paper="paper8" onclick="openPaperModal('paper8')">
+            <h3>The Road Map to FAME: A Framework for Mining and Formal Evaluation of Arguments</h3>
+            <div class="publication-authors">Ringo Baumann, Gregor Wiedemann, Maximilian Heinrich, Ahmad Dawar Hakimi, Gerhard Heyer</div>
+            <div class="publication-venue">Datenbank-Spektrum, 20(2): 107–113, 2020</div>
+            <div class="publication-tags">
+                <span class="pub-tag">argument-mining</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <h2 class="section-title">Blog</h2>
+        <div class="blog-coming-soon">
+            <div class="icon">✍️</div>
+            <h3>Coming Soon</h3>
+            <p>I'm working on writing up thoughts on mechanistic interpretability, active learning, and life as a PhD student. Stay tuned!</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <p style="text-align: center; font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">
+            Interested in collaborating on interpretability or active learning? Let's push the boundaries of NLP together.
+        </p>
+        <div class="social-links">
+            <a href="mailto:adhakimi@cis.lmu.de" class="social-link" title="Email">✉️</a>
+            <a href="https://github.com/adhakimi" class="social-link" title="GitHub">🐙</a>
+            <a href="https://scholar.google.com/citations?user=6Q8I1okAAAAJ" class="social-link" title="Google Scholar">🎓</a>
+            <a href="https://www.linkedin.com/in/adhakimi" class="social-link" title="LinkedIn">💼</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Ahmad Dawar Hakimi · Designed with passion for NLP</p>
+    </footer>
+
+    <!-- Paper Modal -->
+    <div class="modal-overlay" id="paperModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePaperModal()">×</button>
+            <h2 id="modalTitle"></h2>
+            <div class="modal-authors" id="modalAuthors"></div>
+            <div class="modal-venue" id="modalVenue"></div>
+            <h3>Abstract</h3>
+            <div class="abstract" id="modalAbstract"></div>
+            <div class="modal-links" id="modalLinks"></div>
+        </div>
+    </div>
+
+    <script>
+        // Paper data with real abstracts and links
+        const paperData = {
+            paper0: {
+                title: "Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection",
+                authors: "Ahmad Dawar Hakimi, Lea Hirlimann, Isabelle Augenstein, Hinrich Schütze",
+                venue: "arXiv preprint, 2026",
+                abstract: "Instruction-tuned LLMs can annotate thousands of instances from a short prompt at negligible cost. This raises two questions for active learning (AL): can LLM labels replace human labels within the AL loop, and does AL remain necessary when entire corpora can be labelled at once? We investigate both questions on a new dataset of 277,902 German political TikTok comments (25,974 LLM-labelled, 5,000 human-annotated), comparing seven annotation strategies across four encoders to detect anti-immigrant hostility. A classifier trained on 25,974 GPT-5.2 labels ($43) achieves comparable F1-Macro to one trained on 3,800 human annotations ($316). Active learning offers little advantage over random sampling in our pre-enriched pool and delivers lower F1 than full LLM annotation at the same cost. However, comparable aggregate F1 masks a systematic difference in error structure: LLM-trained classifiers over-predict the positive class relative to the human gold standard. This divergence concentrates in topically ambiguous discussions where the distinction between anti-immigrant hostility and policy critique is most subtle, suggesting that annotation strategy should be guided not by aggregate F1 alone but by the error profile acceptable for the target application.",
+                links: [
+                    { text: "📝 arXiv", url: "https://arxiv.org/abs/2604.13899" }
+                ]
+            },
+            paper1: {
+                title: "On Relation-Specific Neurons in Large Language Models",
+                authors: "Yihong Liu*, Runsheng Chen*, Lea Hirlimann, Ahmad Dawar Hakimi, Mingyang Wang, Amir Hossein Kargaran, Sascha Rothe, François Yvon, Hinrich Schütze",
+                venue: "EMNLP 2025 — Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing",
+                abstract: "In large language models (LLMs), certain neurons can store distinct pieces of knowledge learned during pretraining. While factual knowledge typically appears as a combination of relations and entities, it remains unclear whether some neurons focus on a relation itself – independent of any entity. We hypothesize such neurons detect a relation in the input text and guide generation involving such a relation. To investigate this, we study the LLama-2 family on a chosen set of relations, with a statistics-based method. Our experiments demonstrate the existence of relation-specific neurons. We measure the effect of selectively deactivating candidate neurons specific to relation r on the LLM's ability to handle (1) facts involving relation r and (2) facts involving a different relation r' ≠ r. With respect to their capacity for encoding relation information, we give evidence for the following three properties of relation-specific neurons. (i) Neuron cumulativity: Multiple neurons jointly contribute to processing facts involving relation r, with no single neuron fully encoding a fact in r on its own. (ii) Neuron versatility: Neurons can be shared across multiple closely related as well as less related relations. In addition, some relation neurons transfer across languages. (iii) Neuron interference: Deactivating neurons specific to one relation can improve LLMs' factual recall performance for facts of other relations.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2025.emnlp-main.52/" },
+                    { text: "📝 arXiv", url: "https://arxiv.org/abs/2502.17355" },
+                    { text: "💻 Code", url: "https://github.com/cisnlp/relation-specific-neurons" }
+                ]
+            },
+            paper2: {
+                title: "Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models",
+                authors: "Ahmad Dawar Hakimi, Ali Modarressi, Philipp Wicke, Hinrich Schütze",
+                venue: "Findings of ACL 2025 — Findings of the Association for Computational Linguistics: ACL 2025, pp. 12633–12653, Vienna, Austria",
+                abstract: "Understanding how large language models (LLMs) acquire and store factual knowledge is crucial for enhancing their interpretability, reliability, and efficiency. In this work, we analyze the evolution of factual knowledge representation in the OLMo-7B model by tracking the roles of its Attention Heads and Feed Forward Networks (FFNs) over the course of pre-training. We classify these components into four roles — general, entity, relation-answer, and fact-answer specific — and examine their stability and transitions. Our results show that LLMs initially depend on broad, general-purpose components, which later specialize as training progresses. Once the model reliably predicts answers, some components are repurposed, suggesting an adaptive learning process. Notably, answer-specific attention heads display the highest turnover, whereas FFNs remain stable, continually refining stored knowledge. Furthermore, our probing experiments reveal that location-based relations converge to high accuracy earlier in training than name-based relations, highlighting how task complexity shapes acquisition dynamics. These insights offer a mechanistic view of knowledge formation in LLMs and have implications for model pruning, optimization, and transparency.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2025.findings-acl.654/" },
+                    { text: "📝 arXiv", url: "https://arxiv.org/abs/2506.03434" },
+                    { text: "💻 Code", url: "https://github.com/adhakimi/time-course-mechinterp" }
+                ]
+            },
+            paper3: {
+                title: "BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods",
+                authors: "Philipp Mondorf, Mingyang Wang, Sebastian Gerstner, Ahmad Dawar Hakimi, Yihong Liu, Leonor Veloso, Shijia Zhou, Hinrich Schütze, Barbara Plank",
+                venue: "BlackboxNLP 2025 — Proceedings of the 8th BlackboxNLP Workshop: Analyzing and Interpreting Neural Networks for NLP, pp. 537–542, Suzhou, China",
+                abstract: "The Circuit Localization track of the Mechanistic Interpretability Benchmark (MIB) evaluates methods for localizing circuits within large language models (LLMs), i.e., subnetworks responsible for specific task behaviors. In this work, we investigate whether ensembling two or more circuit localization methods can improve performance. We explore two variants: parallel and sequential ensembling. In parallel ensembling, we combine attribution scores assigned to each edge by different methods — e.g., by averaging or taking the minimum or maximum value. In the sequential ensemble, we use edge attribution scores obtained via EAP-IG as a warm start for a more expensive but more precise circuit identification method, namely edge pruning. We observe that both approaches yield notable gains on the benchmark metrics, leading to a more precise circuit identification approach. Finally, we find that taking a parallel ensemble over various methods, including the sequential ensemble, achieves the best results. We evaluate our approach in the BlackboxNLP 2025 MIB Shared Task, comparing ensemble scores to official baselines across multiple model–task combinations.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2025.blackboxnlp-1.31/" },
+                    { text: "📝 arXiv", url: "https://arxiv.org/abs/2510.06811" }
+                ]
+            },
+            paper4: {
+                title: "Citance-Contextualized Summarization of Scientific Papers",
+                authors: "Shahbaz Syed*, Ahmad Dawar Hakimi*, Khalid Al-Khatib, Martin Potthast",
+                venue: "Findings of EMNLP 2023 — Findings of the Association for Computational Linguistics: EMNLP 2023, pp. 8551–8568, Singapore",
+                abstract: "Current approaches to automatic summarization of scientific papers generate informative summaries in the form of abstracts. However, abstracts are not intended to show the relationship between a paper and the references cited in it. We propose a new contextualized summarization approach that can generate an informative summary conditioned on a given sentence containing the citation of a reference (a so-called \"citance\"). This summary outlines the content of the cited paper relevant to the citation location. Thus, our approach extracts and models the citances of a paper, retrieves relevant passages from cited papers, and generates abstractive summaries tailored to each citance. We evaluate our approach using Webis-Context-SciSumm-2023, a new dataset containing 540K computer science papers and 4.6M citances therein.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2023.findings-emnlp.573/" },
+                    { text: "📝 arXiv", url: "https://arxiv.org/abs/2311.02408" },
+                    { text: "📊 Dataset", url: "https://zenodo.org/records/10031025" }
+                ]
+            },
+            paper5: {
+                title: "Explorative Visual Analysis of Rap Music",
+                authors: "Christofer Meinecke, Ahmad Dawar Hakimi, Stefan Jänicke",
+                venue: "Information, 13(1), Article 10, 2022 — MDPI",
+                abstract: "Detecting references and similarities in music lyrics can be a difficult task. Crowdsourced knowledge platforms such as Genius can help in this process through user-annotated information about the artist and the song but fail to include visualizations to help users find similarities and structures on a higher and more abstract level. We propose a prototype to compute similarities between rap artists based on word embedding of their lyrics crawled from Genius. Furthermore, the artists and their lyrics can be analyzed using an explorative visualization system applying multiple visualization methods to support domain-specific tasks.",
+                links: [
+                    { text: "📄 Paper", url: "https://www.mdpi.com/2078-2489/13/1/10" }
+                ]
+            },
+            paper6: {
+                title: "Casting the Same Sentiment Classification Problem",
+                authors: "Erik Körner, Ahmad Dawar Hakimi, Gerhard Heyer, Martin Potthast",
+                venue: "Findings of EMNLP 2021 — Findings of the Association for Computational Linguistics: EMNLP 2021, pp. 584–590",
+                abstract: "We introduce and study a problem variant of sentiment analysis, namely the \"same sentiment classification problem\", where, given a pair of texts, the task is to determine if they have the same sentiment, disregarding the actual sentiment polarity. Among other things, our goal is to enable a more topic-agnostic sentiment classification. We study the problem using the Yelp business review dataset, demonstrating how sentiment data needs to be prepared for this task, and then carry out sequence pair classification using the BERT language model. In a series of experiments, we achieve an accuracy above 83% for category subsets across topics, and 89% on average.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2021.findings-emnlp.53/" }
+                ]
+            },
+            paper7: {
+                title: "On Classifying Whether Two Texts Are on the Same Side of an Argument",
+                authors: "Erik Körner, Gregor Wiedemann, Ahmad Dawar Hakimi, Gerhard Heyer, Martin Potthast",
+                venue: "EMNLP 2021 — Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing, pp. 10130–10138",
+                abstract: "To ease the difficulty of argument stance classification, the task of same side stance classification (S3C) has been proposed. In contrast to actual stance classification, which requires a substantial amount of domain knowledge to identify whether an argument is in favor or against a certain issue, it is argued that, for S3C, only argument similarity within stances needs to be learned to successfully solve the task. We evaluate several transformer-based approaches on the dataset of the recent S3C shared task, followed by an in-depth evaluation and error analysis of our model and the task's hypothesis. We show that, although we achieve state-of-the-art results, our model fails to generalize both within as well as across topics and domains when adjusting the sampling strategy of the training and test set to a more adversarial scenario. Our evaluation shows that current state-of-the-art approaches cannot determine same side stance by considering only domain-independent linguistic similarity features, but appear to require domain knowledge and semantic inference, too.",
+                links: [
+                    { text: "📄 ACL Anthology", url: "https://aclanthology.org/2021.emnlp-main.795/" }
+                ]
+            },
+            paper8: {
+                title: "The Road Map to FAME: A Framework for Mining and Formal Evaluation of Arguments",
+                authors: "Ringo Baumann, Gregor Wiedemann, Maximilian Heinrich, Ahmad Dawar Hakimi, Gerhard Heyer",
+                venue: "Datenbank-Spektrum, 20(2): 107–113, 2020 — Springer",
+                abstract: "Two different perspectives on argumentation have been pursued in computer science research, namely approaches of argument mining in natural language processing on the one hand, and formal argument evaluation on the other hand. So far these research areas are largely independent and unrelated. This article introduces the agenda of our recently started project \"FAME – A framework for argument mining and evaluation\". The main project idea is to link the two perspectives on argumentation and their respective research agendas by employing controlled natural language as a convenient form of intermediate knowledge representation. Our goal is to develop a framework which integrates argument mining and formal argument evaluation to study patterns of empirical argumentation usage. If successful, this combination will allow for new types of queries to be answered by argumentation retrieval systems and large-scale content analysis.",
+                links: [
+                    { text: "📄 Paper", url: "https://link.springer.com/article/10.1007/s13222-020-00343-x" }
+                ]
+            }
+        };
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - scrolled / 700;
+            }
+        });
+
+        // Filter publications by research area
+        function filterPublications(tag) {
+            const items = document.querySelectorAll('.publication-item');
+            const notice = document.getElementById('filterNotice');
+            const label = document.getElementById('filterLabel');
+
+            const tagLabels = {
+                'interpretability': 'Mechanistic Interpretability',
+                'active-learning': 'Active Learning',
+                'llms': 'Large Language Models'
+            };
+
+            label.textContent = tagLabels[tag] || tag;
+            notice.classList.add('active');
+
+            items.forEach(item => {
+                const tags = item.dataset.tags || '';
+                if (tags.includes(tag)) {
+                    item.classList.add('highlighted');
+                    item.style.opacity = '1';
+                } else {
+                    item.classList.remove('highlighted');
+                    item.style.opacity = '0.3';
+                }
+            });
+
+            document.getElementById('publications').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearFilter() {
+            const items = document.querySelectorAll('.publication-item');
+            const notice = document.getElementById('filterNotice');
+            notice.classList.remove('active');
+            items.forEach(item => {
+                item.classList.remove('highlighted');
+                item.style.opacity = '1';
+            });
+        }
+
+        // Paper modal
+        function openPaperModal(paperId) {
+            const paper = paperData[paperId];
+            if (!paper) return;
+
+            document.getElementById('modalTitle').textContent = paper.title;
+            document.getElementById('modalAuthors').textContent = paper.authors;
+            document.getElementById('modalVenue').textContent = paper.venue;
+            document.getElementById('modalAbstract').textContent = paper.abstract;
+
+            const linksContainer = document.getElementById('modalLinks');
+            linksContainer.innerHTML = '';
+            paper.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = link.text;
+                linksContainer.appendChild(a);
+            });
+
+            document.getElementById('paperModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePaperModal() {
+            document.getElementById('paperModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click or Escape
+        document.getElementById('paperModal').addEventListener('click', function(e) {
+            if (e.target === this) closePaperModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePaperModal();
+        });
+    </script>
+</body>
+</html>
