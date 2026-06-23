@@ -369,6 +369,49 @@
             border: 1px solid rgba(78, 205, 196, 0.2);
         }
 
+        .pub-keyword {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .publication-abstract {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .publication-abstract > summary {
+            cursor: pointer;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 500;
+            list-style: none;
+            user-select: none;
+        }
+
+        .publication-abstract > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .publication-abstract > summary::before {
+            content: "▸ ";
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .publication-abstract[open] > summary::before {
+            content: "▾ ";
+        }
+
+        .publication-abstract > p {
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
         /* Blog Section */
         .blog-coming-soon {
             text-align: center;
@@ -655,89 +698,405 @@
             <button onclick="clearFilter()">Show all</button>
         </div>
 
-        <div class="publication-item" data-tags="active-learning llms" data-paper="paper0" onclick="openPaperModal('paper0')">
+        <div id="humans-in-the-loop-llm-annotation" class="publication-item" data-tags="active-learning llms" data-paper="paper0" onclick="openPaperModal('paper0')">
             <h3>Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection</h3>
             <div class="publication-authors">Ahmad Dawar Hakimi, Lea Hirlimann, Isabelle Augenstein, Hinrich Schütze</div>
             <div class="publication-venue">arXiv preprint, 2026</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>Instruction-tuned LLMs can annotate thousands of instances from a short prompt at negligible cost. This raises two questions for active learning (AL): can LLM labels replace human labels within the AL loop, and does AL remain necessary when entire corpora can be labelled at once? We investigate both questions on a new dataset of 277,902 German political TikTok comments (25,974 LLM-labelled, 5,000 human-annotated), comparing seven annotation strategies across four encoders to detect anti-immigrant hostility. A classifier trained on 25,974 GPT-5.2 labels ($43) achieves comparable F1-Macro to one trained on 3,800 human annotations ($316). Active learning offers little advantage over random sampling in our pre-enriched pool and delivers lower F1 than full LLM annotation at the same cost. However, comparable aggregate F1 masks a systematic difference in error structure: LLM-trained classifiers over-predict the positive class relative to the human gold standard. This divergence concentrates in topically ambiguous discussions where the distinction between anti-immigrant hostility and policy critique is most subtle, suggesting that annotation strategy should be guided not by aggregate F1 alone but by the error profile acceptable for the target application.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">active-learning</span>
                 <span class="pub-tag">llms</span>
+                <span class="pub-keyword">active learning</span>
+                <span class="pub-keyword">LLM annotation</span>
+                <span class="pub-keyword">human vs LLM annotation</span>
+                <span class="pub-keyword">hostility detection</span>
+                <span class="pub-keyword">anti-immigrant classification</span>
+                <span class="pub-keyword">TikTok comments</span>
+                <span class="pub-keyword">German political discourse</span>
+                <span class="pub-keyword">annotation cost</span>
+                <span class="pub-keyword">weak supervision</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection",
+                "author": [
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Lea Hirlimann"},
+                    {"@type": "Person", "name": "Isabelle Augenstein"},
+                    {"@type": "Person", "name": "Hinrich Schütze"}
+                ],
+                "datePublished": "2026",
+                "publisher": {"@type": "Organization", "name": "arXiv"},
+                "isPartOf": "arXiv preprint",
+                "abstract": "Instruction-tuned LLMs can annotate thousands of instances from a short prompt at negligible cost. This raises two questions for active learning: can LLM labels replace human labels within the AL loop, and does AL remain necessary when entire corpora can be labelled at once? We investigate both on a new dataset of 277,902 German political TikTok comments, comparing seven annotation strategies across four encoders to detect anti-immigrant hostility, and find that LLM labels can match human annotations in aggregate F1 at a fraction of the cost but produce systematically different error structures.",
+                "keywords": ["active learning", "LLM annotation", "human vs LLM annotation", "hostility detection", "anti-immigrant classification", "TikTok comments", "German political discourse", "annotation cost", "weak supervision", "GPT-5.2", "text classification"],
+                "url": "https://adhakimi.github.io/#humans-in-the-loop-llm-annotation",
+                "sameAs": [
+                    "https://arxiv.org/abs/2604.13899"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="interpretability llms" data-paper="paper1" onclick="openPaperModal('paper1')">
+        <div id="relation-specific-neurons" class="publication-item" data-tags="interpretability llms" data-paper="paper1" onclick="openPaperModal('paper1')">
             <h3>On Relation-Specific Neurons in Large Language Models</h3>
             <div class="publication-authors">Yihong Liu*, Runsheng Chen*, Lea Hirlimann, Ahmad Dawar Hakimi, Mingyang Wang, Amir Hossein Kargaran, Sascha Rothe, François Yvon, Hinrich Schütze</div>
             <div class="publication-venue">EMNLP 2025</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>In large language models (LLMs), certain neurons can store distinct pieces of knowledge learned during pretraining. While factual knowledge typically appears as a combination of relations and entities, it remains unclear whether some neurons focus on a relation itself – independent of any entity. We hypothesize such neurons detect a relation in the input text and guide generation involving such a relation. To investigate this, we study the LLama-2 family on a chosen set of relations, with a statistics-based method. Our experiments demonstrate the existence of relation-specific neurons. We measure the effect of selectively deactivating candidate neurons specific to relation r on the LLM's ability to handle (1) facts involving relation r and (2) facts involving a different relation r' ≠ r. With respect to their capacity for encoding relation information, we give evidence for the following three properties of relation-specific neurons. (i) Neuron cumulativity: Multiple neurons jointly contribute to processing facts involving relation r, with no single neuron fully encoding a fact in r on its own. (ii) Neuron versatility: Neurons can be shared across multiple closely related as well as less related relations. In addition, some relation neurons transfer across languages. (iii) Neuron interference: Deactivating neurons specific to one relation can improve LLMs' factual recall performance for facts of other relations.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">interpretability</span>
                 <span class="pub-tag">llms</span>
+                <span class="pub-keyword">relation-specific neurons</span>
+                <span class="pub-keyword">knowledge neurons</span>
+                <span class="pub-keyword">mechanistic interpretability</span>
+                <span class="pub-keyword">factual knowledge</span>
+                <span class="pub-keyword">neuron interference</span>
+                <span class="pub-keyword">cross-lingual neurons</span>
+                <span class="pub-keyword">fact storage</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "On Relation-Specific Neurons in Large Language Models",
+                "author": [
+                    {"@type": "Person", "name": "Yihong Liu"},
+                    {"@type": "Person", "name": "Runsheng Chen"},
+                    {"@type": "Person", "name": "Lea Hirlimann"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Mingyang Wang"},
+                    {"@type": "Person", "name": "Amir Hossein Kargaran"},
+                    {"@type": "Person", "name": "Sascha Rothe"},
+                    {"@type": "Person", "name": "François Yvon"},
+                    {"@type": "Person", "name": "Hinrich Schütze"}
+                ],
+                "datePublished": "2025",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025)",
+                "abstract": "In large language models, certain neurons can store distinct pieces of knowledge learned during pretraining. We study whether some neurons focus on a relation itself, independent of any entity, by analyzing the LLaMA-2 family with a statistics-based method. We give evidence for three properties of relation-specific neurons: cumulativity (multiple neurons jointly encode a relation), versatility (neurons transfer across related relations and across languages), and interference (deactivating neurons specific to one relation can improve factual recall for facts of other relations).",
+                "keywords": ["relation-specific neurons", "knowledge neurons", "mechanistic interpretability", "factual knowledge", "fact storage", "neuron interference", "neuron cumulativity", "neuron versatility", "cross-lingual neurons", "LLaMA-2", "large language models"],
+                "url": "https://adhakimi.github.io/#relation-specific-neurons",
+                "sameAs": [
+                    "https://aclanthology.org/2025.emnlp-main.52/",
+                    "https://arxiv.org/abs/2502.17355",
+                    "https://github.com/cisnlp/relation-specific-neurons"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="interpretability llms" data-paper="paper2" onclick="openPaperModal('paper2')">
+        <div id="time-course-mechinterp" class="publication-item" data-tags="interpretability llms" data-paper="paper2" onclick="openPaperModal('paper2')">
             <h3>Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models</h3>
             <div class="publication-authors">Ahmad Dawar Hakimi, Ali Modarressi, Philipp Wicke, Hinrich Schütze</div>
             <div class="publication-venue">Findings of ACL 2025</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>Understanding how large language models (LLMs) acquire and store factual knowledge is crucial for enhancing their interpretability, reliability, and efficiency. In this work, we analyze the evolution of factual knowledge representation in the OLMo-7B model by tracking the roles of its Attention Heads and Feed Forward Networks (FFNs) over the course of pre-training. We classify these components into four roles — general, entity, relation-answer, and fact-answer specific — and examine their stability and transitions. Our results show that LLMs initially depend on broad, general-purpose components, which later specialize as training progresses. Once the model reliably predicts answers, some components are repurposed, suggesting an adaptive learning process. Notably, answer-specific attention heads display the highest turnover, whereas FFNs remain stable, continually refining stored knowledge. Furthermore, our probing experiments reveal that location-based relations converge to high accuracy earlier in training than name-based relations, highlighting how task complexity shapes acquisition dynamics. These insights offer a mechanistic view of knowledge formation in LLMs and have implications for model pruning, optimization, and transparency.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">interpretability</span>
                 <span class="pub-tag">llms</span>
+                <span class="pub-keyword">training dynamics</span>
+                <span class="pub-keyword">training trajectory</span>
+                <span class="pub-keyword">mechanistic interpretability</span>
+                <span class="pub-keyword">circuits</span>
+                <span class="pub-keyword">knowledge acquisition</span>
+                <span class="pub-keyword">factual recall</span>
+                <span class="pub-keyword">pre-training analysis</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "Time Course MechInterp: Analyzing the Evolution of Components and Knowledge in Large Language Models",
+                "author": [
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Ali Modarressi"},
+                    {"@type": "Person", "name": "Philipp Wicke"},
+                    {"@type": "Person", "name": "Hinrich Schütze"}
+                ],
+                "datePublished": "2025",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Findings of the Association for Computational Linguistics: ACL 2025",
+                "abstract": "Understanding how large language models (LLMs) acquire and store factual knowledge is crucial for enhancing their interpretability, reliability, and efficiency. In this work, we analyze the evolution of factual knowledge representation in the OLMo-7B model by tracking the roles of its Attention Heads and Feed Forward Networks (FFNs) over the course of pre-training. We classify these components into four roles — general, entity, relation-answer, and fact-answer specific — and examine their stability and transitions. Notably, answer-specific attention heads display the highest turnover, whereas FFNs remain stable. Probing experiments reveal that location-based relations converge to high accuracy earlier in training than name-based relations.",
+                "keywords": ["training dynamics", "training trajectory", "evolution of components", "mechanistic interpretability", "circuits", "OLMo", "knowledge acquisition", "factual recall", "pre-training analysis", "large language models"],
+                "url": "https://adhakimi.github.io/#time-course-mechinterp",
+                "sameAs": [
+                    "https://arxiv.org/abs/2506.03434",
+                    "https://aclanthology.org/2025.findings-acl.654/",
+                    "https://github.com/adhakimi/time-course-mechinterp"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="interpretability llms" data-paper="paper3" onclick="openPaperModal('paper3')">
+        <div id="blackboxnlp-mib-shared-task" class="publication-item" data-tags="interpretability llms" data-paper="paper3" onclick="openPaperModal('paper3')">
             <h3>BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods</h3>
             <div class="publication-authors">Philipp Mondorf, Mingyang Wang, Sebastian Gerstner, Ahmad Dawar Hakimi, Yihong Liu, Leonor Veloso, Shijia Zhou, Hinrich Schütze, Barbara Plank</div>
             <div class="publication-venue">BlackboxNLP Workshop @ EMNLP 2025</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>The Circuit Localization track of the Mechanistic Interpretability Benchmark (MIB) evaluates methods for localizing circuits within large language models (LLMs), i.e., subnetworks responsible for specific task behaviors. In this work, we investigate whether ensembling two or more circuit localization methods can improve performance. We explore two variants: parallel and sequential ensembling. In parallel ensembling, we combine attribution scores assigned to each edge by different methods — e.g., by averaging or taking the minimum or maximum value. In the sequential ensemble, we use edge attribution scores obtained via EAP-IG as a warm start for a more expensive but more precise circuit identification method, namely edge pruning. We observe that both approaches yield notable gains on the benchmark metrics, leading to a more precise circuit identification approach. Finally, we find that taking a parallel ensemble over various methods, including the sequential ensemble, achieves the best results. We evaluate our approach in the BlackboxNLP 2025 MIB Shared Task, comparing ensemble scores to official baselines across multiple model–task combinations.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">interpretability</span>
                 <span class="pub-tag">llms</span>
+                <span class="pub-keyword">circuit localization</span>
+                <span class="pub-keyword">MIB benchmark</span>
+                <span class="pub-keyword">mechanistic interpretability benchmark</span>
+                <span class="pub-keyword">ensemble methods</span>
+                <span class="pub-keyword">edge pruning</span>
+                <span class="pub-keyword">circuit identification</span>
+                <span class="pub-keyword">subnetwork analysis</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "BlackboxNLP-2025 MIB Shared Task: Exploring Ensemble Strategies for Circuit Localization Methods",
+                "author": [
+                    {"@type": "Person", "name": "Philipp Mondorf"},
+                    {"@type": "Person", "name": "Mingyang Wang"},
+                    {"@type": "Person", "name": "Sebastian Gerstner"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Yihong Liu"},
+                    {"@type": "Person", "name": "Leonor Veloso"},
+                    {"@type": "Person", "name": "Shijia Zhou"},
+                    {"@type": "Person", "name": "Hinrich Schütze"},
+                    {"@type": "Person", "name": "Barbara Plank"}
+                ],
+                "datePublished": "2025",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Proceedings of the 8th BlackboxNLP Workshop: Analyzing and Interpreting Neural Networks for NLP",
+                "abstract": "The Circuit Localization track of the Mechanistic Interpretability Benchmark (MIB) evaluates methods for localizing circuits within large language models. We investigate whether ensembling two or more circuit localization methods can improve performance, exploring parallel ensembles (combining attribution scores) and sequential ensembles (using EAP-IG as a warm start for edge pruning). Both approaches yield notable gains on the benchmark, and a parallel ensemble over multiple methods achieves the best results in the BlackboxNLP 2025 MIB Shared Task.",
+                "keywords": ["circuit localization", "MIB benchmark", "mechanistic interpretability benchmark", "ensemble methods", "edge attribution", "EAP-IG", "edge pruning", "circuit identification", "subnetwork analysis", "BlackboxNLP shared task"],
+                "url": "https://adhakimi.github.io/#blackboxnlp-mib-shared-task",
+                "sameAs": [
+                    "https://aclanthology.org/2025.blackboxnlp-1.31/",
+                    "https://arxiv.org/abs/2510.06811"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="summarization" data-paper="paper4" onclick="openPaperModal('paper4')">
+        <div id="citance-contextualized-summarization" class="publication-item" data-tags="summarization" data-paper="paper4" onclick="openPaperModal('paper4')">
             <h3>Citance-Contextualized Summarization of Scientific Papers</h3>
             <div class="publication-authors">Shahbaz Syed*, Ahmad Dawar Hakimi*, Khalid Al-Khatib, Martin Potthast</div>
             <div class="publication-venue">Findings of EMNLP 2023</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>Current approaches to automatic summarization of scientific papers generate informative summaries in the form of abstracts. However, abstracts are not intended to show the relationship between a paper and the references cited in it. We propose a new contextualized summarization approach that can generate an informative summary conditioned on a given sentence containing the citation of a reference (a so-called "citance"). This summary outlines the content of the cited paper relevant to the citation location. Thus, our approach extracts and models the citances of a paper, retrieves relevant passages from cited papers, and generates abstractive summaries tailored to each citance. We evaluate our approach using Webis-Context-SciSumm-2023, a new dataset containing 540K computer science papers and 4.6M citances therein.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">summarization</span>
+                <span class="pub-keyword">citance</span>
+                <span class="pub-keyword">scientific paper summarization</span>
+                <span class="pub-keyword">citation-aware summarization</span>
+                <span class="pub-keyword">contextualized summarization</span>
+                <span class="pub-keyword">abstractive summarization</span>
+                <span class="pub-keyword">retrieval-augmented summarization</span>
+                <span class="pub-keyword">scholarly NLP</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "Citance-Contextualized Summarization of Scientific Papers",
+                "author": [
+                    {"@type": "Person", "name": "Shahbaz Syed"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Khalid Al-Khatib"},
+                    {"@type": "Person", "name": "Martin Potthast"}
+                ],
+                "datePublished": "2023",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Findings of the Association for Computational Linguistics: EMNLP 2023",
+                "abstract": "We propose a new contextualized summarization approach for scientific papers that generates an informative summary conditioned on a given sentence containing the citation of a reference (a \"citance\"). Our approach extracts and models the citances of a paper, retrieves relevant passages from cited papers, and generates abstractive summaries tailored to each citance. We evaluate using Webis-Context-SciSumm-2023, a new dataset containing 540K computer science papers and 4.6M citances.",
+                "keywords": ["citance", "scientific paper summarization", "citation-aware summarization", "contextualized summarization", "abstractive summarization", "retrieval-augmented summarization", "scholarly NLP", "Webis-Context-SciSumm"],
+                "url": "https://adhakimi.github.io/#citance-contextualized-summarization",
+                "sameAs": [
+                    "https://aclanthology.org/2023.findings-emnlp.573/",
+                    "https://arxiv.org/abs/2311.02408",
+                    "https://zenodo.org/records/10031025"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="visualization" data-paper="paper5" onclick="openPaperModal('paper5')">
+        <div id="rap-music-visualization" class="publication-item" data-tags="visualization" data-paper="paper5" onclick="openPaperModal('paper5')">
             <h3>Explorative Visual Analysis of Rap Music</h3>
             <div class="publication-authors">Christofer Meinecke, Ahmad Dawar Hakimi, Stefan Jänicke</div>
             <div class="publication-venue">Information, 13(1), 2022</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>Detecting references and similarities in music lyrics can be a difficult task. Crowdsourced knowledge platforms such as Genius can help in this process through user-annotated information about the artist and the song but fail to include visualizations to help users find similarities and structures on a higher and more abstract level. We propose a prototype to compute similarities between rap artists based on word embedding of their lyrics crawled from Genius. Furthermore, the artists and their lyrics can be analyzed using an explorative visualization system applying multiple visualization methods to support domain-specific tasks.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">visualization</span>
+                <span class="pub-keyword">rap music</span>
+                <span class="pub-keyword">lyrics analysis</span>
+                <span class="pub-keyword">word embeddings</span>
+                <span class="pub-keyword">music similarity</span>
+                <span class="pub-keyword">Genius lyrics</span>
+                <span class="pub-keyword">exploratory visualization</span>
+                <span class="pub-keyword">computational musicology</span>
+                <span class="pub-keyword">hip-hop</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "Explorative Visual Analysis of Rap Music",
+                "author": [
+                    {"@type": "Person", "name": "Christofer Meinecke"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Stefan Jänicke"}
+                ],
+                "datePublished": "2022",
+                "publisher": {"@type": "Organization", "name": "MDPI"},
+                "isPartOf": "Information, 13(1), Article 10",
+                "abstract": "Detecting references and similarities in music lyrics can be difficult. We propose a prototype that computes similarities between rap artists based on word embeddings of lyrics crawled from Genius, paired with an explorative visualization system applying multiple visualization methods to support domain-specific tasks.",
+                "keywords": ["rap music", "lyrics analysis", "word embeddings", "music similarity", "Genius lyrics", "exploratory visualization", "computational musicology", "hip-hop", "music information retrieval"],
+                "url": "https://adhakimi.github.io/#rap-music-visualization",
+                "sameAs": [
+                    "https://www.mdpi.com/2078-2489/13/1/10",
+                    "https://doi.org/10.3390/info13010010"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="sentiment" data-paper="paper6" onclick="openPaperModal('paper6')">
+        <div id="same-sentiment-classification" class="publication-item" data-tags="sentiment" data-paper="paper6" onclick="openPaperModal('paper6')">
             <h3>Casting the Same Sentiment Classification Problem</h3>
             <div class="publication-authors">Erik Körner, Ahmad Dawar Hakimi, Gerhard Heyer, Martin Potthast</div>
             <div class="publication-venue">Findings of EMNLP 2021</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>We introduce and study a problem variant of sentiment analysis, namely the "same sentiment classification problem", where, given a pair of texts, the task is to determine if they have the same sentiment, disregarding the actual sentiment polarity. Among other things, our goal is to enable a more topic-agnostic sentiment classification. We study the problem using the Yelp business review dataset, demonstrating how sentiment data needs to be prepared for this task, and then carry out sequence pair classification using the BERT language model. In a series of experiments, we achieve an accuracy above 83% for category subsets across topics, and 89% on average.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">sentiment</span>
+                <span class="pub-keyword">same sentiment classification</span>
+                <span class="pub-keyword">sentiment analysis</span>
+                <span class="pub-keyword">BERT</span>
+                <span class="pub-keyword">sequence pair classification</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "Casting the Same Sentiment Classification Problem",
+                "author": [
+                    {"@type": "Person", "name": "Erik Körner"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Gerhard Heyer"},
+                    {"@type": "Person", "name": "Martin Potthast"}
+                ],
+                "datePublished": "2021",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Findings of the Association for Computational Linguistics: EMNLP 2021",
+                "abstract": "We introduce a variant of sentiment analysis, the \"same sentiment classification problem\": given a pair of texts, determine whether they share the same sentiment, disregarding the actual polarity. Using Yelp business reviews and a BERT-based sequence-pair classifier, we achieve accuracy above 83% on category subsets across topics and 89% on average, enabling more topic-agnostic sentiment classification.",
+                "keywords": ["same sentiment classification", "sentiment analysis", "BERT", "sequence pair classification", "topic-agnostic sentiment", "Yelp reviews"],
+                "url": "https://adhakimi.github.io/#same-sentiment-classification",
+                "sameAs": [
+                    "https://aclanthology.org/2021.findings-emnlp.53/"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="argument-mining" data-paper="paper7" onclick="openPaperModal('paper7')">
+        <div id="same-side-stance-classification" class="publication-item" data-tags="argument-mining" data-paper="paper7" onclick="openPaperModal('paper7')">
             <h3>On Classifying Whether Two Texts Are on the Same Side of an Argument</h3>
             <div class="publication-authors">Erik Körner, Gregor Wiedemann, Ahmad Dawar Hakimi, Gerhard Heyer, Martin Potthast</div>
             <div class="publication-venue">EMNLP 2021</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>To ease the difficulty of argument stance classification, the task of same side stance classification (S3C) has been proposed. In contrast to actual stance classification, which requires a substantial amount of domain knowledge to identify whether an argument is in favor or against a certain issue, it is argued that, for S3C, only argument similarity within stances needs to be learned to successfully solve the task. We evaluate several transformer-based approaches on the dataset of the recent S3C shared task, followed by an in-depth evaluation and error analysis of our model and the task's hypothesis. We show that, although we achieve state-of-the-art results, our model fails to generalize both within as well as across topics and domains when adjusting the sampling strategy of the training and test set to a more adversarial scenario. Our evaluation shows that current state-of-the-art approaches cannot determine same side stance by considering only domain-independent linguistic similarity features, but appear to require domain knowledge and semantic inference, too.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">argument-mining</span>
+                <span class="pub-keyword">same side stance classification</span>
+                <span class="pub-keyword">argument mining</span>
+                <span class="pub-keyword">stance classification</span>
+                <span class="pub-keyword">transformer models</span>
+                <span class="pub-keyword">cross-topic generalization</span>
+                <span class="pub-keyword">argument similarity</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "On Classifying Whether Two Texts Are on the Same Side of an Argument",
+                "author": [
+                    {"@type": "Person", "name": "Erik Körner"},
+                    {"@type": "Person", "name": "Gregor Wiedemann"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Gerhard Heyer"},
+                    {"@type": "Person", "name": "Martin Potthast"}
+                ],
+                "datePublished": "2021",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP 2021)",
+                "abstract": "Same Side Stance Classification (S3C) asks whether two arguments take the same side on an issue, hypothesizing that only argument similarity within stances needs to be learned. We evaluate transformer-based approaches on the S3C shared task dataset and show that, despite state-of-the-art aggregate results, models fail to generalize across topics and domains under adversarial sampling — indicating that domain knowledge and semantic inference are required beyond domain-independent linguistic similarity.",
+                "keywords": ["same side stance classification", "S3C", "argument mining", "stance classification", "transformer models", "cross-topic generalization", "argument similarity"],
+                "url": "https://adhakimi.github.io/#same-side-stance-classification",
+                "sameAs": [
+                    "https://aclanthology.org/2021.emnlp-main.795/"
+                ]
+            }
+            </script>
         </div>
 
-        <div class="publication-item" data-tags="argument-mining" data-paper="paper8" onclick="openPaperModal('paper8')">
+        <div id="fame-argument-framework" class="publication-item" data-tags="argument-mining" data-paper="paper8" onclick="openPaperModal('paper8')">
             <h3>The Road Map to FAME: A Framework for Mining and Formal Evaluation of Arguments</h3>
             <div class="publication-authors">Ringo Baumann, Gregor Wiedemann, Maximilian Heinrich, Ahmad Dawar Hakimi, Gerhard Heyer</div>
             <div class="publication-venue">Datenbank-Spektrum, 20(2): 107–113, 2020</div>
+            <details class="publication-abstract" onclick="event.stopPropagation()">
+                <summary>Abstract</summary>
+                <p>Two different perspectives on argumentation have been pursued in computer science research, namely approaches of argument mining in natural language processing on the one hand, and formal argument evaluation on the other hand. So far these research areas are largely independent and unrelated. This article introduces the agenda of our recently started project "FAME – A framework for argument mining and evaluation". The main project idea is to link the two perspectives on argumentation and their respective research agendas by employing controlled natural language as a convenient form of intermediate knowledge representation. Our goal is to develop a framework which integrates argument mining and formal argument evaluation to study patterns of empirical argumentation usage. If successful, this combination will allow for new types of queries to be answered by argumentation retrieval systems and large-scale content analysis.</p>
+            </details>
             <div class="publication-tags">
                 <span class="pub-tag">argument-mining</span>
+                <span class="pub-keyword">argument mining</span>
+                <span class="pub-keyword">formal argumentation</span>
+                <span class="pub-keyword">FAME framework</span>
+                <span class="pub-keyword">controlled natural language</span>
+                <span class="pub-keyword">argument evaluation</span>
+                <span class="pub-keyword">knowledge representation</span>
+                <span class="pub-keyword">argumentation retrieval</span>
             </div>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ScholarlyArticle",
+                "headline": "The Road Map to FAME: A Framework for Mining and Formal Evaluation of Arguments",
+                "author": [
+                    {"@type": "Person", "name": "Ringo Baumann"},
+                    {"@type": "Person", "name": "Gregor Wiedemann"},
+                    {"@type": "Person", "name": "Maximilian Heinrich"},
+                    {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
+                    {"@type": "Person", "name": "Gerhard Heyer"}
+                ],
+                "datePublished": "2020",
+                "publisher": {"@type": "Organization", "name": "Springer"},
+                "isPartOf": "Datenbank-Spektrum, 20(2): 107–113",
+                "abstract": "Argument mining in NLP and formal argument evaluation have so far been pursued independently. This article introduces \"FAME – A framework for argument mining and evaluation\", a project that links the two perspectives by employing controlled natural language as an intermediate knowledge representation, enabling new types of queries for argumentation retrieval systems and large-scale content analysis.",
+                "keywords": ["argument mining", "formal argumentation", "FAME framework", "controlled natural language", "argument evaluation", "knowledge representation", "argumentation retrieval"],
+                "url": "https://adhakimi.github.io/#fame-argument-framework",
+                "sameAs": [
+                    "https://link.springer.com/article/10.1007/s13222-020-00343-x",
+                    "https://doi.org/10.1007/s13222-020-00343-x"
+                ]
+            }
+            </script>
         </div>
     </section>
 
