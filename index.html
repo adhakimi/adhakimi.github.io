@@ -694,7 +694,7 @@
             <li><a href="#research">Research</a></li>
             <li><a href="#publications">Publications</a></li>
             <!-- <li><a href="#blog">Blog</a></li> -->
-            <li><a href="static/uploads/CV_Hakimi_website.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+            <li><a href="static/uploads/CV_Hakimi_web.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -705,7 +705,7 @@
                 <span class="job-banner-dot" aria-hidden="true"></span>
                 <span>
                     <strong>On the job market:</strong> open to industry roles from spring 2027, including research scientist/engineer, forward deployed engineer and other applied AI positions.
-                    <a href="static/uploads/CV_Hakimi_website.pdf" target="_blank" rel="noopener noreferrer">CV</a> ·
+                    <a href="static/uploads/CV_Hakimi_web.pdf" target="_blank" rel="noopener noreferrer">CV</a> ·
                     <a href="mailto:adhakimi@cis.lmu.de?subject=Job%20opportunity">Get in touch</a>
                 </span>
             </div>
@@ -721,7 +721,7 @@
             </p>
             <div class="hero-buttons">
                 <a href="#publications" class="btn btn-primary">View Publications</a>
-                <a href="static/uploads/CV_Hakimi_website.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">CV</a>
+                <a href="static/uploads/CV_Hakimi_web.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">CV</a>
                 <a href="#contact" class="btn btn-secondary">Get in Touch</a>
             </div>
             <div class="hero-image">
@@ -808,9 +808,9 @@
         </div>
 
         <div id="humans-in-the-loop-llm-annotation" class="publication-item" data-tags="active-learning llms" data-paper="paper0" onclick="openPaperModal('paper0')">
-            <h3>Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection</h3>
+            <h3>Do We Still Need Humans in the Loop? Human vs. LLM Annotation in Active Learning for TikTok Hate Speech Detection</h3>
             <div class="publication-authors">Ahmad Dawar Hakimi, Lea Hirlimann, Isabelle Augenstein, Hinrich Schütze</div>
-            <div class="publication-venue">arXiv preprint, 2026</div>
+            <div class="publication-venue">Findings of EMNLP 2026</div>
             <details class="publication-abstract" onclick="event.stopPropagation()">
                 <summary>Abstract</summary>
                 <p>Instruction-tuned LLMs can annotate thousands of instances from a short prompt at negligible cost. This raises two questions for active learning (AL): can LLM labels replace human labels within the AL loop, and does AL remain necessary when entire corpora can be labelled at once? We investigate both questions on a new dataset of 277,902 German political TikTok comments (25,974 LLM-labelled, 5,000 human-annotated), comparing seven annotation strategies across four encoders to detect anti-immigrant hostility. A classifier trained on 25,974 GPT-5.2 labels ($43) achieves comparable F1-Macro to one trained on 3,800 human annotations ($316). Active learning offers little advantage over random sampling in our pre-enriched pool and delivers lower F1 than full LLM annotation at the same cost. However, comparable aggregate F1 masks a systematic difference in error structure: LLM-trained classifiers over-predict the positive class relative to the human gold standard. This divergence concentrates in topically ambiguous discussions where the distinction between anti-immigrant hostility and policy critique is most subtle, suggesting that annotation strategy should be guided not by aggregate F1 alone but by the error profile acceptable for the target application.</p>
@@ -832,7 +832,7 @@
             {
                 "@context": "https://schema.org",
                 "@type": "ScholarlyArticle",
-                "headline": "Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection",
+                "headline": "Do We Still Need Humans in the Loop? Human vs. LLM Annotation in Active Learning for TikTok Hate Speech Detection",
                 "author": [
                     {"@type": "Person", "name": "Ahmad Dawar Hakimi"},
                     {"@type": "Person", "name": "Lea Hirlimann"},
@@ -840,8 +840,8 @@
                     {"@type": "Person", "name": "Hinrich Schütze"}
                 ],
                 "datePublished": "2026",
-                "publisher": {"@type": "Organization", "name": "arXiv"},
-                "isPartOf": "arXiv preprint",
+                "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+                "isPartOf": "Findings of the Association for Computational Linguistics: EMNLP 2026",
                 "abstract": "Instruction-tuned LLMs can annotate thousands of instances from a short prompt at negligible cost. This raises two questions for active learning: can LLM labels replace human labels within the AL loop, and does AL remain necessary when entire corpora can be labelled at once? We investigate both on a new dataset of 277,902 German political TikTok comments, comparing seven annotation strategies across four encoders to detect anti-immigrant hostility, and find that LLM labels can match human annotations in aggregate F1 at a fraction of the cost but produce systematically different error structures.",
                 "keywords": ["active learning", "LLM annotation", "human vs LLM annotation", "hostility detection", "anti-immigrant classification", "TikTok comments", "German political discourse", "annotation cost", "weak supervision", "GPT-5.2", "text classification"],
                 "url": "https://adhakimi.github.io/#humans-in-the-loop-llm-annotation",
@@ -1272,9 +1272,9 @@
                 ]
             },
             paper0: {
-                title: "Do We Still Need Humans in the Loop? Comparing Human and LLM Annotation in Active Learning for Hostility Detection",
+                title: "Do We Still Need Humans in the Loop? Human vs. LLM Annotation in Active Learning for TikTok Hate Speech Detection",
                 authors: "Ahmad Dawar Hakimi, Lea Hirlimann, Isabelle Augenstein, Hinrich Schütze",
-                venue: "arXiv preprint, 2026",
+                venue: "Findings of EMNLP 2026",
                 abstract: "Instruction-tuned LLMs can annotate thousands of instances from a short prompt at negligible cost. This raises two questions for active learning (AL): can LLM labels replace human labels within the AL loop, and does AL remain necessary when entire corpora can be labelled at once? We investigate both questions on a new dataset of 277,902 German political TikTok comments (25,974 LLM-labelled, 5,000 human-annotated), comparing seven annotation strategies across four encoders to detect anti-immigrant hostility. A classifier trained on 25,974 GPT-5.2 labels ($43) achieves comparable F1-Macro to one trained on 3,800 human annotations ($316). Active learning offers little advantage over random sampling in our pre-enriched pool and delivers lower F1 than full LLM annotation at the same cost. However, comparable aggregate F1 masks a systematic difference in error structure: LLM-trained classifiers over-predict the positive class relative to the human gold standard. This divergence concentrates in topically ambiguous discussions where the distinction between anti-immigrant hostility and policy critique is most subtle, suggesting that annotation strategy should be guided not by aggregate F1 alone but by the error profile acceptable for the target application.",
                 links: [
                     { text: "📝 arXiv", url: "https://arxiv.org/abs/2604.13899" },
