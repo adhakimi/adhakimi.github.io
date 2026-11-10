@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>You didn't hate the person you were 10 years ago</title><style>
-:root {color-scheme:light; --ink:#212b2a; --muted:#66716c; --paper:#fcfbf8; --forest:#385f55; --rule:#e1e4dd; --note:#f4f3ed;}
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>You didn't hate the person you were 10 years ago</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/><style>
+:root {color-scheme:light; --ink:#1f2a33; --muted:#5f6b74; --paper:#fbfcfc; --accent:#1D546D; --rule:#e0e6e9; --note:#f1f5f6; --frame:#ffffff; --frame-border:#e3e8ea; --shadow:rgba(20,40,55,.10); --logo-a:#1D546D; --logo-b:#2a7a9b;
+  --sans:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif; --display:'Space Grotesk',ui-sans-serif,system-ui,-apple-system,sans-serif;}
+@media (prefers-color-scheme: dark) {
+  :root {color-scheme:dark; --ink:#e3e6e8; --muted:#9aa4ab; --paper:#0a0f1a; --accent:#4ecdc4; --rule:rgba(255,255,255,.1); --note:rgba(255,255,255,.05); --frame:#141b26; --frame-border:rgba(255,255,255,.08); --shadow:rgba(0,0,0,.45); --logo-a:#4ecdc4; --logo-b:#2a7a9b;}
+}
 * {box-sizing:border-box}
 html {scroll-behavior:smooth}
 body {margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,'Iowan Old Style',Cambria,serif; font-size:18px; line-height:1.76; -webkit-font-smoothing:antialiased}
 main {max-width:840px; padding:62px 45px 110px; margin:auto}
-h1,h2 {font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif; line-height:1.17; letter-spacing:-.028em}
-h1 {font-size:clamp(32px,4.4vw,49px);font-weight:750;max-width:760px; margin:0 0 42px; text-wrap:balance}
-h2 {font-size:clamp(23px,3vw,28px);font-weight:680; margin:72px 0 26px; padding-top:14px; border-top:1px solid var(--rule); color:var(--forest);scroll-margin-top:30px}
+h1,h2 {font-family:var(--display); line-height:1.17; letter-spacing:-.02em}
+h1 {font-size:clamp(32px,4.4vw,49px);font-weight:700;max-width:760px; margin:0 0 42px; text-wrap:balance}
+h2 {font-size:clamp(23px,3vw,28px);font-weight:600; margin:72px 0 26px; padding-top:14px; border-top:1px solid var(--rule); color:var(--accent);scroll-margin-top:30px}
 p {margin:0 0 24px;}
 strong {font-weight:650}
 .photo {margin:0; min-width:0}
-.photo img {width:100%;height:auto;display:block;object-fit:cover; border-radius:7px;box-shadow:0 7px 25px rgba(30,45,42,.10)}
-.photo figcaption {color:var(--muted);font:italic 13px/1.45 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;text-align:center;margin-top:11px}
+.photo img {width:100%;height:auto;display:block;object-fit:cover; border-radius:7px;box-shadow:0 7px 25px var(--shadow)}
+.photo figcaption {color:var(--muted);font:italic 13px/1.45 var(--sans);text-align:center;margin-top:11px}
 .intro-grid {display:grid;grid-template-columns:minmax(0,1fr) 235px;align-items:start;column-gap:36px;margin:0 0 16px}
 .intro-copy p:last-child {margin-bottom:0}
 .photo--early img {aspect-ratio: .7; object-fit:cover;object-position:center 45%;}
-.photo--instagram {width:min(340px,90%);margin:29px auto 42px;padding:7px;background:white;border:1px solid #e6e7e2;border-radius:11px;box-shadow:0 12px 34px rgba(30,45,42,.08)}
+.photo--instagram {width:min(340px,90%);margin:29px auto 42px;padding:7px;background:var(--frame);border:1px solid var(--frame-border);border-radius:11px;box-shadow:0 12px 34px var(--shadow)}
 .photo--instagram img {border-radius:4px;box-shadow:none;height:auto;max-height:none}
 .story-row {display:grid;grid-template-columns:minmax(0,1fr) 245px;gap:30px;align-items:start; margin:7px 0 43px}
 .story-row__text p {margin:0}
@@ -28,9 +32,16 @@ strong {font-weight:650}
 .photo--half img {aspect-ratio: .78;object-position:center 63%;}
 .photo--triathlon {width:min(625px,100%);margin:29px auto 48px}
 .photo--triathlon img {aspect-ratio: .91;object-position:center 51%;}
-.editorial-placeholder {font:13px/1.5 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif; color:#727b74; background:var(--note); padding:13px 16px; border:1px dashed #c7cec7;border-radius:8px;margin:21px 0 34px;text-align:center}
-.editorial-placeholder strong {font-weight:400}
 hr {border:0;border-top:1px solid var(--rule); margin:58px 0 27px}
+main a {color:var(--accent)}
+.site-bar {max-width:840px;margin:auto;padding:22px 45px 0;display:flex;justify-content:space-between;align-items:center;font:500 15px/1.4 var(--sans)}
+.site-bar a {color:var(--muted);text-decoration:none;transition:color .2s}
+.site-bar a:hover {color:var(--accent)}
+.site-bar .logo {font:700 24px/1 var(--display);background:linear-gradient(135deg,var(--logo-a),var(--logo-b));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.site-bar .links {display:flex;gap:22px}
+.post-meta {font:15px/1.4 var(--sans);color:var(--muted);margin:-26px 0 40px}
+.post-footer {max-width:840px;margin:auto;padding:0 45px 60px;font:15px/1.5 var(--sans);color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.post-footer a {color:var(--accent);text-decoration:none}
 @media(max-width:700px) {
   body {font-size:17px;line-height:1.72}
   main {padding:32px 22px 65px}
@@ -45,22 +56,11 @@ hr {border:0;border-top:1px solid var(--rule); margin:58px 0 27px}
   .photo--kenny {width:min(370px,100%)}
   .photo--half {width:min(340px,100%)}
   .photo--triathlon {width:100%}
-}
-.site-bar {max-width:840px;margin:auto;padding:22px 45px 0;display:flex;justify-content:space-between;align-items:baseline;font:15px/1.4 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
-.site-bar a {color:var(--muted);text-decoration:none}
-.site-bar a:hover {color:var(--forest)}
-.site-bar .home {color:var(--ink);font-weight:650}
-.post-meta {font:15px/1.4 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--muted);margin:-26px 0 40px}
-main a {color:var(--forest)}
-.post-footer {max-width:840px;margin:auto;padding:0 45px 60px;font:15px/1.5 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.post-footer a {color:var(--forest);text-decoration:none}
-@media(max-width:700px) {
   .site-bar {padding:16px 22px 0}
   .post-meta {margin:-16px 0 28px}
   .post-footer {padding:0 22px 44px}
 }
-@media print {.site-bar,.post-footer{display:none}}
-@media print {body{font-size:11.5pt}main{padding:0;max-width:none}h2{break-after:avoid}p{orphans:3;widows:3}.photo,.story-row,.intro-grid{break-inside:avoid}.photo img{box-shadow:none}}
+@media print {.site-bar,.post-footer{display:none} body{font-size:11.5pt}main{padding:0;max-width:none}h2{break-after:avoid}p{orphans:3;widows:3}.photo,.story-row,.intro-grid{break-inside:avoid}.photo img{box-shadow:none}}
 </style><meta content="Personal reflections on ten years of movement, consistency and learning to enjoy the process." name="description"/>
 <meta property="og:type" content="article"/>
 <meta property="og:title" content="You didn't hate the person you were 10 years ago"/>
@@ -71,10 +71,10 @@ main a {color:var(--forest)}
 <meta property="article:author" content="Ahmad Dawar Hakimi"/>
 <meta name="twitter:card" content="summary_large_image"/>
 </head><body>
-<nav class="site-bar"><a class="home" href="../../">Ahmad Dawar Hakimi</a><a href="../../#blog">Blog</a></nav>
+<nav class="site-bar"><a class="logo" href="../../" aria-label="Ahmad Dawar Hakimi, homepage">ADH</a><div class="links"><a href="../../">Home</a><a href="../../#blog">Blog</a></div></nav>
 <main>
 <h1>You didn't hate the person you were 10 years ago. You loved him so much that you wanted better for him.</h1>
-<p class="post-meta"><time datetime="2026-11-12">12 November 2026</time> · 12 min read</p>
+<p class="post-meta"><time datetime="2026-11-12">12 November 2026</time></p>
 <div class="intro-grid"><div class="intro-copy"><p>12.11.2016 - I tried to tie my shoe while standing, but I couldn't reach it. My stomach was in the way. At that moment I just hated my body. I used to be fit. I was playing professional table tennis, I was a good football player, I trained every day. Now it felt like all of that was gone.</p><p>I had injured my knees, hadn't been able to work out for over 2 years, and became depressed and overweight. I was weighing 134 kg (almost 300 pounds for any American reading this).</p><p>And at this moment, I was so angry at myself. I just put on some random trainers, wore the only fitting sports clothes I had and went for a run. For years I thought I ran 4 kilometers (as you can see at the proud hashtags of the post) but in fact it was only 2 kilometers (I walked the path years later with a smartwatch). My legs hurt for a whole week, and I was walking like a drunk penguin.</p></div><figure class="photo photo--early"><img alt="Portrait from 2016" decoding="async" loading="eager" src="images/2016-portrait.jpg"/><figcaption>A week before I started university in 2016, wearing a 4XL suit jacket.</figcaption></figure></div><figure class="photo photo--instagram"><img alt="Original Instagram post from November 2016 with the #4km hashtag" decoding="async" loading="lazy" src="images/instagram-2016.jpg"/><figcaption>My original post from November 12, 2016 — including my very proud #4km hashtag.</figcaption></figure>
 <h2>Learning to show up</h2>
 <p>And from that moment I did it consistently once or twice a week - running incredible 2 kilometers.</p>
