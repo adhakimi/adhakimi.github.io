@@ -112,6 +112,9 @@
         .hero-content {
             max-width: 900px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-content h1 {
@@ -241,13 +244,14 @@
         }
 
         .hero-image {
-            margin-top: 3rem;
+            order: -1;
+            margin: 0 0 1.8rem;
             animation: floating 6s ease-in-out infinite, fadeInUp 1s ease 0.6s both;
         }
 
         .hero-image img {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 3px solid var(--accent);
             box-shadow: 0 0 40px var(--accent-glow);
@@ -711,8 +715,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
-            .hero-content { display: flex; flex-direction: column; align-items: center; }
-            .hero-image { order: -1; margin: 0 0 1.5rem; }
+            .hero-image { margin-bottom: 1.5rem; }
             .hero-image img { width: 130px; height: 130px; }
             .nav-links { display: none; }
             .research-grid { grid-template-columns: 1fr; }
@@ -1258,7 +1261,7 @@
         <a class="blog-post-card" href="blog/you-didnt-hate-who-you-were/">
             <img src="blog/you-didnt-hate-who-you-were/images/triathlon-swim.jpg" alt="Coming out of the water during my first triathlon" loading="lazy">
             <div>
-                <div class="blog-post-date">12 November 2026 · 12 min read</div>
+                <div class="blog-post-date">12 November 2026</div>
                 <h3>You didn't hate the person you were 10 years ago</h3>
                 <p>Ten years ago I couldn't tie my shoes standing up. This is what a decade of running, bodyweight training and learning to enjoy the process taught me.</p>
                 <span class="blog-post-more">Read the post →</span>
@@ -1431,7 +1434,7 @@
             }
             const scrolled = window.pageYOffset;
             hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            hero.style.opacity = 1 - scrolled / 700;
+            hero.style.opacity = 1 - scrolled / hero.offsetHeight;
         });
 
         // Filter publications by research area
