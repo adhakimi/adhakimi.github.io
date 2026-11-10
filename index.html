@@ -197,6 +197,10 @@
             color: var(--accent);
         }
 
+        .hero-description p + p {
+            margin-top: 1rem;
+        }
+
         .hero-buttons {
             display: flex;
             gap: 1rem;
@@ -460,32 +464,73 @@
         }
 
         /* Blog Section */
-        .blog-coming-soon {
-            text-align: center;
-            padding: 4rem 2rem;
+        .blog-post-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.8rem;
+            align-items: center;
+            padding: 1.5rem;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid var(--glass-border);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
         }
 
-        .blog-coming-soon .icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+        .blog-post-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 5px 25px rgba(78, 205, 196, 0.1);
+            transform: translateY(-3px);
         }
 
-        .blog-coming-soon h3 {
+        .blog-post-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            object-position: center 40%;
+            border-radius: 14px;
+        }
+
+        .blog-post-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+
+        .blog-post-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            line-height: 1.35;
+            margin-bottom: 0.7rem;
             color: var(--text-primary);
         }
 
-        .blog-coming-soon p {
+        .blog-post-card p {
             color: var(--text-secondary);
-            font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+
+        .blog-post-more {
+            display: inline-block;
+            margin-top: 0.9rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .blog-post-card {
+                grid-template-columns: 1fr;
+                gap: 1.1rem;
+            }
+
+            .blog-post-card img {
+                aspect-ratio: 16 / 10;
+                object-position: center 20%;
+            }
         }
 
         /* Modal */
@@ -693,7 +738,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#research">Research</a></li>
             <li><a href="#publications">Publications</a></li>
-            <!-- <li><a href="#blog">Blog</a></li> -->
+            <li><a href="#blog">Blog</a></li>
             <li><a href="static/uploads/CV_Hakimi_web.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -712,13 +757,12 @@
             <h1>Ahmad Dawar Hakimi</h1>
             <div class="hero-subtitle">Interpretability &amp; Active Learning</div>
             <div class="hero-affiliation">CIS @ LMU Munich <> CopeNLU @ UCPH</div>
-            <p class="hero-description">
-                Hi, I’m Dawar, a final-year ELLIS PhD student at LMU Munich and the University of Copenhagen, co-supervised by Hinrich Schütze and Isabelle Augenstein.
-                I study how large language models acquire, store and memorize knowledge during training, and how to edit that behaviour directly.
-                I also work on active learning, now that LLMs can label data themselves.
-                Outside the lab, I work on training dynamics of a different kind with Early Birds Urban Movement, or listen to
-                <a href="https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=170f8bdd6d424401" target="_blank" rel="noopener noreferrer">some beautiful music</a>.
-            </p>
+            <div class="hero-description">
+                <p>Hi, I’m Dawar, a final-year ELLIS PhD student at LMU Munich and the University of Copenhagen, supervised by Hinrich Schütze and Isabelle Augenstein.</p>
+                <p>I'm fascinated by how language models learn: how they acquire and represent knowledge during training, and how we can change their behavior. I also work on data-efficient NLP, particularly active learning and how its role is evolving in the era of LLMs.</p>
+                <p>Outside the lab, I explore training dynamics of a different kind with Early Birds Urban Movement, or listen to
+                <a href="https://open.spotify.com/playlist/6l81283sgPY8MWhT1QclW1?si=170f8bdd6d424401" target="_blank" rel="noopener noreferrer">some beautiful music</a>.</p>
+            </div>
             <div class="hero-buttons">
                 <a href="#publications" class="btn btn-primary">View Publications</a>
                 <a href="static/uploads/CV_Hakimi_web.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">CV</a>
@@ -1209,16 +1253,18 @@
         </div>
     </section>
 
-    <!-- Blog: hidden until the first post exists; uncomment this and the nav link to restore.
     <section id="blog">
         <h2 class="section-title">Blog</h2>
-        <div class="blog-coming-soon">
-            <div class="icon">✍️</div>
-            <h3>Coming Soon</h3>
-            <p>I'm working on writing up thoughts on mechanistic interpretability, active learning, and life as a PhD student. Stay tuned!</p>
-        </div>
+        <a class="blog-post-card" href="blog/you-didnt-hate-who-you-were/">
+            <img src="blog/you-didnt-hate-who-you-were/images/triathlon-swim.jpg" alt="Coming out of the water during my first triathlon" loading="lazy">
+            <div>
+                <div class="blog-post-date">12 November 2026 · 12 min read</div>
+                <h3>You didn't hate the person you were 10 years ago</h3>
+                <p>Ten years ago I couldn't tie my shoes standing up. This is what a decade of running, bodyweight training and learning to enjoy the process taught me.</p>
+                <span class="blog-post-more">Read the post →</span>
+            </div>
+        </a>
     </section>
-    -->
 
 
     <section id="contact">
